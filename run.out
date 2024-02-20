@@ -1,0 +1,891 @@
+Starting Test Bench Script
+Cleaning project
+Compiling modules
+Running Test Bench
+proc_top.vhd:113:9:@0ms:(report note): Reset Process - rst: 0, run_mode: 0, reset active: 0
+proc_top.vhd:145:10:@0ms:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@0ms:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:205:9:@0ms:(report note): Manual_Toggle_Process
+proc_top.vhd:215:9:@0ms:(report note): Run Toggle
+proc_top.vhd:226:9:@0ms:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:205:9:@0ms:(report note): Manual_Toggle_Process
+proc_top.vhd:207:13:@0ms:(report note): Manual Toggle Process - setting run mode to 0
+proc_top.vhd:145:10:@50ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@50ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@50ns:(report note): Reset Process - rst: 0, run_mode: 0, reset active: 0
+proc_top_tb.vhd:60:13:@100ns:(report note): Loading Memory Contents
+proc_top.vhd:145:10:@100ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@100ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@100ns:(report note): Reset Process - rst: 0, run_mode: 0, reset active: 0
+proc_top.vhd:226:9:@130ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:228:13:@130ns:(report note): Handling Mem Toggle
+proc_top.vhd:233:17:@130ns:(report note): Writing Data 00001001 to Memory [0000]
+proc_top.vhd:226:9:@140ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:145:10:@150ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@150ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@150ns:(report note): Reset Process - rst: 0, run_mode: 0, reset active: 0
+proc_top.vhd:226:9:@170ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:228:13:@170ns:(report note): Handling Mem Toggle
+proc_top.vhd:233:17:@170ns:(report note): Writing Data 00011010 to Memory [0001]
+proc_top.vhd:226:9:@180ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:145:10:@200ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@200ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@200ns:(report note): Reset Process - rst: 0, run_mode: 0, reset active: 0
+proc_top.vhd:226:9:@210ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:228:13:@210ns:(report note): Handling Mem Toggle
+proc_top.vhd:233:17:@210ns:(report note): Writing Data 00011011 to Memory [0010]
+proc_top.vhd:226:9:@220ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:145:10:@250ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@250ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@250ns:(report note): Reset Process - rst: 0, run_mode: 0, reset active: 0
+proc_top.vhd:226:9:@250ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:228:13:@250ns:(report note): Handling Mem Toggle
+proc_top.vhd:233:17:@250ns:(report note): Writing Data 00101100 to Memory [0011]
+proc_top.vhd:226:9:@260ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:226:9:@290ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:228:13:@290ns:(report note): Handling Mem Toggle
+proc_top.vhd:233:17:@290ns:(report note): Writing Data 11100000 to Memory [0100]
+proc_top.vhd:145:10:@300ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@300ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@300ns:(report note): Reset Process - rst: 0, run_mode: 0, reset active: 0
+proc_top.vhd:226:9:@300ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:226:9:@330ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:228:13:@330ns:(report note): Handling Mem Toggle
+proc_top.vhd:233:17:@330ns:(report note): Writing Data 11110000 to Memory [0101]
+proc_top.vhd:226:9:@340ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:145:10:@350ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@350ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@350ns:(report note): Reset Process - rst: 0, run_mode: 0, reset active: 0
+proc_top.vhd:226:9:@370ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:228:13:@370ns:(report note): Handling Mem Toggle
+proc_top.vhd:233:17:@370ns:(report note): Writing Data 10101010 to Memory [0110]
+proc_top.vhd:226:9:@380ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:145:10:@400ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@400ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@400ns:(report note): Reset Process - rst: 0, run_mode: 0, reset active: 0
+proc_top.vhd:226:9:@410ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:228:13:@410ns:(report note): Handling Mem Toggle
+proc_top.vhd:233:17:@410ns:(report note): Writing Data 10101010 to Memory [0111]
+proc_top.vhd:226:9:@420ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:145:10:@450ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@450ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@450ns:(report note): Reset Process - rst: 0, run_mode: 0, reset active: 0
+proc_top.vhd:226:9:@450ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:228:13:@450ns:(report note): Handling Mem Toggle
+proc_top.vhd:233:17:@450ns:(report note): Writing Data 10101010 to Memory [1000]
+proc_top.vhd:226:9:@460ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:226:9:@490ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:228:13:@490ns:(report note): Handling Mem Toggle
+proc_top.vhd:233:17:@490ns:(report note): Writing Data 00010000 to Memory [1001]
+proc_top.vhd:145:10:@500ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@500ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@500ns:(report note): Reset Process - rst: 0, run_mode: 0, reset active: 0
+proc_top.vhd:226:9:@500ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:226:9:@530ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:228:13:@530ns:(report note): Handling Mem Toggle
+proc_top.vhd:233:17:@530ns:(report note): Writing Data 00010100 to Memory [1010]
+proc_top.vhd:226:9:@540ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:145:10:@550ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@550ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@550ns:(report note): Reset Process - rst: 0, run_mode: 0, reset active: 0
+proc_top.vhd:226:9:@570ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:228:13:@570ns:(report note): Handling Mem Toggle
+proc_top.vhd:233:17:@570ns:(report note): Writing Data 00011000 to Memory [1011]
+proc_top.vhd:226:9:@580ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:145:10:@600ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@600ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@600ns:(report note): Reset Process - rst: 0, run_mode: 0, reset active: 0
+proc_top.vhd:226:9:@610ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:228:13:@610ns:(report note): Handling Mem Toggle
+proc_top.vhd:233:17:@610ns:(report note): Writing Data 00100000 to Memory [1100]
+proc_top.vhd:226:9:@620ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:145:10:@650ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@650ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@650ns:(report note): Reset Process - rst: 0, run_mode: 0, reset active: 0
+proc_top.vhd:226:9:@650ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:228:13:@650ns:(report note): Handling Mem Toggle
+proc_top.vhd:233:17:@650ns:(report note): Writing Data 10101010 to Memory [1101]
+proc_top.vhd:226:9:@660ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:226:9:@690ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:228:13:@690ns:(report note): Handling Mem Toggle
+proc_top.vhd:233:17:@690ns:(report note): Writing Data 10101010 to Memory [1110]
+proc_top.vhd:145:10:@700ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@700ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@700ns:(report note): Reset Process - rst: 0, run_mode: 0, reset active: 0
+proc_top.vhd:226:9:@700ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:226:9:@730ns:(report note): mem_toggle Process, run_mode: 0
+proc_top.vhd:228:13:@730ns:(report note): Handling Mem Toggle
+proc_top.vhd:233:17:@730ns:(report note): Writing Data 10101010 to Memory [1111]
+proc_top_tb.vhd:116:13:@740ns:(report note): Finsihed Loading Memory
+proc_top_tb.vhd:117:13:@740ns:(report note): Resetting
+proc_top.vhd:145:10:@740ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@740ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@740ns:(report note): Reset Process - rst: 1, run_mode: 0, reset active: 0
+proc_top.vhd:145:10:@750ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@750ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@750ns:(report note): Reset Process - rst: 1, run_mode: 0, reset active: 0
+proc_top.vhd:118:17:@750ns:(report note): Clearing Registers
+proc_top.vhd:145:10:@800ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@800ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@800ns:(report note): Reset Process - rst: 1, run_mode: 0, reset active: 1
+proc_top.vhd:145:10:@840ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@840ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@840ns:(report note): Reset Process - rst: 0, run_mode: 0, reset active: 1
+proc_top.vhd:145:10:@850ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@850ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@850ns:(report note): Reset Process - rst: 0, run_mode: 0, reset active: 1
+proc_top.vhd:131:17:@850ns:(report note): After Reset setting run mode to 1 - PC: 0000, IR: 00000000, MAR: 0000
+proc_top.vhd:145:10:@900ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@900ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@900ns:(report note): Reset Process - rst: 0, run_mode: 0, reset active: 0
+proc_top.vhd:215:9:@940ns:(report note): Run Toggle
+proc_top.vhd:217:13:@940ns:(report note): Run Toggle Process - setting run mode to 1
+proc_top.vhd:93:13:@940ns:(report note): 0:  09  LDA 9H
+proc_top.vhd:93:13:@940ns:(report note): 1:  1A  ADD AH
+proc_top.vhd:93:13:@940ns:(report note): 2:  1B  ADD BH
+proc_top.vhd:93:13:@940ns:(report note): 3:  2C  SUB CH
+proc_top.vhd:93:13:@940ns:(report note): 4:  E0  OUT 
+proc_top.vhd:93:13:@940ns:(report note): 5:  F0  HLT 
+proc_top.vhd:93:13:@940ns:(report note): 6:  AA  ??? 
+proc_top.vhd:93:13:@940ns:(report note): 7:  AA  ??? 
+proc_top.vhd:93:13:@940ns:(report note): 8:  AA  ??? 
+proc_top.vhd:93:13:@940ns:(report note): 9:  10  ADD 0H
+proc_top.vhd:93:13:@940ns:(report note): A:  14  ADD 4H
+proc_top.vhd:93:13:@940ns:(report note): B:  18  ADD 8H
+proc_top.vhd:93:13:@940ns:(report note): C:  20  SUB 0H
+proc_top.vhd:93:13:@940ns:(report note): D:  AA  ??? 
+proc_top.vhd:93:13:@940ns:(report note): E:  AA  ??? 
+proc_top.vhd:93:13:@940ns:(report note): F:  AA  ??? 
+proc_top.vhd:226:9:@940ns:(report note): mem_toggle Process, run_mode: 1
+proc_top.vhd:145:10:@940ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@940ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:145:10:@950ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@950ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:159:13:@950ns:(report note): Processing with PC: 0000, temp_PC: 0000, Stage: 0, IR: 00000000, MAR: 0000, OPCODE: 0000, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:173:33:@950ns:(report note): Stage 1 - Assigning PC to MAR
+proc_top.vhd:175:33:@950ns:(report note): MAR after set from PC during stage 1. 0000
+proc_top.vhd:113:9:@950ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@1us:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@1us:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@1us:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@1050ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@1050ns:(report note): Registers - PC: [0000], MAR: [0000], IR: [00000000]
+proc_top.vhd:159:13:@1050ns:(report note): Processing with PC: 0000, temp_PC: 0000, Stage: 1, IR: 00000000, MAR: 0000, OPCODE: 0000, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:178:33:@1050ns:(report note): Stage 2 - Incrementing PC - current value of PC: 0000
+proc_top.vhd:181:33:@1050ns:(report note): PC after increment during stage 2: 0001, 0000
+proc_top.vhd:113:9:@1050ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@1100ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@1100ns:(report note): Registers - PC: [0001], MAR: [0000], IR: [00000000]
+proc_top.vhd:113:9:@1100ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@1150ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@1150ns:(report note): Registers - PC: [0001], MAR: [0000], IR: [00000000]
+proc_top.vhd:159:13:@1150ns:(report note): Processing with PC: 0001, temp_PC: 0001, Stage: 2, IR: 00000000, MAR: 0000, OPCODE: 0000, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:184:33:@1150ns:(report note): Stage 3 - loading IR from memory - MAR: 0000, MEM(0): 00001001
+proc_top.vhd:189:33:@1150ns:(report note): IR after loading from memory during stage 3: temp_IR: 00001001, opcode=0000, operand=1001
+proc_top.vhd:113:9:@1150ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@1200ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@1200ns:(report note): Registers - PC: [0001], MAR: [0000], IR: [00001001]
+proc_top.vhd:113:9:@1200ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@1250ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@1250ns:(report note): Registers - PC: [0001], MAR: [0000], IR: [00001001]
+proc_top.vhd:159:13:@1250ns:(report note): Processing with PC: 0001, temp_PC: 0001, Stage: 3, IR: 00001001, MAR: 0000, OPCODE: 0000, OPERAND: 1001, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@1250ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@1300ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@1300ns:(report note): Registers - PC: [0001], MAR: [0000], IR: [00001001]
+proc_top.vhd:113:9:@1300ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@1350ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@1350ns:(report note): Registers - PC: [0001], MAR: [0000], IR: [00001001]
+proc_top.vhd:159:13:@1350ns:(report note): Processing with PC: 0001, temp_PC: 0001, Stage: 4, IR: 00001001, MAR: 0000, OPCODE: 0000, OPERAND: 1001, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@1350ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@1400ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@1400ns:(report note): Registers - PC: [0001], MAR: [0000], IR: [00001001]
+proc_top.vhd:113:9:@1400ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@1450ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@1450ns:(report note): Registers - PC: [0001], MAR: [0000], IR: [00001001]
+proc_top.vhd:159:13:@1450ns:(report note): Processing with PC: 0001, temp_PC: 0001, Stage: 5, IR: 00001001, MAR: 0000, OPCODE: 0000, OPERAND: 1001, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@1450ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@1500ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@1500ns:(report note): Registers - PC: [0001], MAR: [0000], IR: [00001001]
+proc_top.vhd:113:9:@1500ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@1550ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@1550ns:(report note): Registers - PC: [0001], MAR: [0000], IR: [00001001]
+proc_top.vhd:159:13:@1550ns:(report note): Processing with PC: 0001, temp_PC: 0001, Stage: 0, IR: 00001001, MAR: 0000, OPCODE: 0000, OPERAND: 1001, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:173:33:@1550ns:(report note): Stage 1 - Assigning PC to MAR
+proc_top.vhd:175:33:@1550ns:(report note): MAR after set from PC during stage 1. 0000
+proc_top.vhd:113:9:@1550ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@1600ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@1600ns:(report note): Registers - PC: [0001], MAR: [0001], IR: [00001001]
+proc_top.vhd:113:9:@1600ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@1650ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@1650ns:(report note): Registers - PC: [0001], MAR: [0001], IR: [00001001]
+proc_top.vhd:159:13:@1650ns:(report note): Processing with PC: 0001, temp_PC: 0001, Stage: 1, IR: 00001001, MAR: 0001, OPCODE: 0000, OPERAND: 1001, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:178:33:@1650ns:(report note): Stage 2 - Incrementing PC - current value of PC: 0001
+proc_top.vhd:181:33:@1650ns:(report note): PC after increment during stage 2: 0010, 0001
+proc_top.vhd:113:9:@1650ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@1700ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@1700ns:(report note): Registers - PC: [0010], MAR: [0001], IR: [00001001]
+proc_top.vhd:113:9:@1700ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@1750ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@1750ns:(report note): Registers - PC: [0010], MAR: [0001], IR: [00001001]
+proc_top.vhd:159:13:@1750ns:(report note): Processing with PC: 0010, temp_PC: 0010, Stage: 2, IR: 00001001, MAR: 0001, OPCODE: 0000, OPERAND: 1001, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:184:33:@1750ns:(report note): Stage 3 - loading IR from memory - MAR: 0001, MEM(0): 00011010
+proc_top.vhd:189:33:@1750ns:(report note): IR after loading from memory during stage 3: temp_IR: 00011010, opcode=0001, operand=1010
+proc_top.vhd:113:9:@1750ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@1800ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@1800ns:(report note): Registers - PC: [0010], MAR: [0001], IR: [00011010]
+proc_top.vhd:113:9:@1800ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@1850ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@1850ns:(report note): Registers - PC: [0010], MAR: [0001], IR: [00011010]
+proc_top.vhd:159:13:@1850ns:(report note): Processing with PC: 0010, temp_PC: 0010, Stage: 3, IR: 00011010, MAR: 0001, OPCODE: 0001, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@1850ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@1900ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@1900ns:(report note): Registers - PC: [0010], MAR: [0001], IR: [00011010]
+proc_top.vhd:113:9:@1900ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@1950ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@1950ns:(report note): Registers - PC: [0010], MAR: [0001], IR: [00011010]
+proc_top.vhd:159:13:@1950ns:(report note): Processing with PC: 0010, temp_PC: 0010, Stage: 4, IR: 00011010, MAR: 0001, OPCODE: 0001, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@1950ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@2us:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@2us:(report note): Registers - PC: [0010], MAR: [0001], IR: [00011010]
+proc_top.vhd:113:9:@2us:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@2050ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@2050ns:(report note): Registers - PC: [0010], MAR: [0001], IR: [00011010]
+proc_top.vhd:159:13:@2050ns:(report note): Processing with PC: 0010, temp_PC: 0010, Stage: 5, IR: 00011010, MAR: 0001, OPCODE: 0001, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@2050ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@2100ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@2100ns:(report note): Registers - PC: [0010], MAR: [0001], IR: [00011010]
+proc_top.vhd:113:9:@2100ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@2150ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@2150ns:(report note): Registers - PC: [0010], MAR: [0001], IR: [00011010]
+proc_top.vhd:159:13:@2150ns:(report note): Processing with PC: 0010, temp_PC: 0010, Stage: 0, IR: 00011010, MAR: 0001, OPCODE: 0001, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:173:33:@2150ns:(report note): Stage 1 - Assigning PC to MAR
+proc_top.vhd:175:33:@2150ns:(report note): MAR after set from PC during stage 1. 0001
+proc_top.vhd:113:9:@2150ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@2200ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@2200ns:(report note): Registers - PC: [0010], MAR: [0010], IR: [00011010]
+proc_top.vhd:113:9:@2200ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@2250ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@2250ns:(report note): Registers - PC: [0010], MAR: [0010], IR: [00011010]
+proc_top.vhd:159:13:@2250ns:(report note): Processing with PC: 0010, temp_PC: 0010, Stage: 1, IR: 00011010, MAR: 0010, OPCODE: 0001, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:178:33:@2250ns:(report note): Stage 2 - Incrementing PC - current value of PC: 0010
+proc_top.vhd:181:33:@2250ns:(report note): PC after increment during stage 2: 0011, 0010
+proc_top.vhd:113:9:@2250ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@2300ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@2300ns:(report note): Registers - PC: [0011], MAR: [0010], IR: [00011010]
+proc_top.vhd:113:9:@2300ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@2350ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@2350ns:(report note): Registers - PC: [0011], MAR: [0010], IR: [00011010]
+proc_top.vhd:159:13:@2350ns:(report note): Processing with PC: 0011, temp_PC: 0011, Stage: 2, IR: 00011010, MAR: 0010, OPCODE: 0001, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:184:33:@2350ns:(report note): Stage 3 - loading IR from memory - MAR: 0010, MEM(0): 00011011
+proc_top.vhd:189:33:@2350ns:(report note): IR after loading from memory during stage 3: temp_IR: 00011011, opcode=0001, operand=1011
+proc_top.vhd:113:9:@2350ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@2400ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@2400ns:(report note): Registers - PC: [0011], MAR: [0010], IR: [00011011]
+proc_top.vhd:113:9:@2400ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@2450ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@2450ns:(report note): Registers - PC: [0011], MAR: [0010], IR: [00011011]
+proc_top.vhd:159:13:@2450ns:(report note): Processing with PC: 0011, temp_PC: 0011, Stage: 3, IR: 00011011, MAR: 0010, OPCODE: 0001, OPERAND: 1011, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@2450ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@2500ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@2500ns:(report note): Registers - PC: [0011], MAR: [0010], IR: [00011011]
+proc_top.vhd:113:9:@2500ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@2550ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@2550ns:(report note): Registers - PC: [0011], MAR: [0010], IR: [00011011]
+proc_top.vhd:159:13:@2550ns:(report note): Processing with PC: 0011, temp_PC: 0011, Stage: 4, IR: 00011011, MAR: 0010, OPCODE: 0001, OPERAND: 1011, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@2550ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@2600ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@2600ns:(report note): Registers - PC: [0011], MAR: [0010], IR: [00011011]
+proc_top.vhd:113:9:@2600ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@2650ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@2650ns:(report note): Registers - PC: [0011], MAR: [0010], IR: [00011011]
+proc_top.vhd:159:13:@2650ns:(report note): Processing with PC: 0011, temp_PC: 0011, Stage: 5, IR: 00011011, MAR: 0010, OPCODE: 0001, OPERAND: 1011, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@2650ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@2700ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@2700ns:(report note): Registers - PC: [0011], MAR: [0010], IR: [00011011]
+proc_top.vhd:113:9:@2700ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@2750ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@2750ns:(report note): Registers - PC: [0011], MAR: [0010], IR: [00011011]
+proc_top.vhd:159:13:@2750ns:(report note): Processing with PC: 0011, temp_PC: 0011, Stage: 0, IR: 00011011, MAR: 0010, OPCODE: 0001, OPERAND: 1011, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:173:33:@2750ns:(report note): Stage 1 - Assigning PC to MAR
+proc_top.vhd:175:33:@2750ns:(report note): MAR after set from PC during stage 1. 0010
+proc_top.vhd:113:9:@2750ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@2800ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@2800ns:(report note): Registers - PC: [0011], MAR: [0011], IR: [00011011]
+proc_top.vhd:113:9:@2800ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@2850ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@2850ns:(report note): Registers - PC: [0011], MAR: [0011], IR: [00011011]
+proc_top.vhd:159:13:@2850ns:(report note): Processing with PC: 0011, temp_PC: 0011, Stage: 1, IR: 00011011, MAR: 0011, OPCODE: 0001, OPERAND: 1011, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:178:33:@2850ns:(report note): Stage 2 - Incrementing PC - current value of PC: 0011
+proc_top.vhd:181:33:@2850ns:(report note): PC after increment during stage 2: 0100, 0011
+proc_top.vhd:113:9:@2850ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@2900ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@2900ns:(report note): Registers - PC: [0100], MAR: [0011], IR: [00011011]
+proc_top.vhd:113:9:@2900ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@2950ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@2950ns:(report note): Registers - PC: [0100], MAR: [0011], IR: [00011011]
+proc_top.vhd:159:13:@2950ns:(report note): Processing with PC: 0100, temp_PC: 0100, Stage: 2, IR: 00011011, MAR: 0011, OPCODE: 0001, OPERAND: 1011, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:184:33:@2950ns:(report note): Stage 3 - loading IR from memory - MAR: 0011, MEM(0): 00101100
+proc_top.vhd:189:33:@2950ns:(report note): IR after loading from memory during stage 3: temp_IR: 00101100, opcode=0010, operand=1100
+proc_top.vhd:113:9:@2950ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@3us:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@3us:(report note): Registers - PC: [0100], MAR: [0011], IR: [00101100]
+proc_top.vhd:113:9:@3us:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@3050ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@3050ns:(report note): Registers - PC: [0100], MAR: [0011], IR: [00101100]
+proc_top.vhd:159:13:@3050ns:(report note): Processing with PC: 0100, temp_PC: 0100, Stage: 3, IR: 00101100, MAR: 0011, OPCODE: 0010, OPERAND: 1100, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@3050ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@3100ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@3100ns:(report note): Registers - PC: [0100], MAR: [0011], IR: [00101100]
+proc_top.vhd:113:9:@3100ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@3150ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@3150ns:(report note): Registers - PC: [0100], MAR: [0011], IR: [00101100]
+proc_top.vhd:159:13:@3150ns:(report note): Processing with PC: 0100, temp_PC: 0100, Stage: 4, IR: 00101100, MAR: 0011, OPCODE: 0010, OPERAND: 1100, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@3150ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@3200ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@3200ns:(report note): Registers - PC: [0100], MAR: [0011], IR: [00101100]
+proc_top.vhd:113:9:@3200ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@3250ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@3250ns:(report note): Registers - PC: [0100], MAR: [0011], IR: [00101100]
+proc_top.vhd:159:13:@3250ns:(report note): Processing with PC: 0100, temp_PC: 0100, Stage: 5, IR: 00101100, MAR: 0011, OPCODE: 0010, OPERAND: 1100, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@3250ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@3300ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@3300ns:(report note): Registers - PC: [0100], MAR: [0011], IR: [00101100]
+proc_top.vhd:113:9:@3300ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@3350ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@3350ns:(report note): Registers - PC: [0100], MAR: [0011], IR: [00101100]
+proc_top.vhd:159:13:@3350ns:(report note): Processing with PC: 0100, temp_PC: 0100, Stage: 0, IR: 00101100, MAR: 0011, OPCODE: 0010, OPERAND: 1100, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:173:33:@3350ns:(report note): Stage 1 - Assigning PC to MAR
+proc_top.vhd:175:33:@3350ns:(report note): MAR after set from PC during stage 1. 0011
+proc_top.vhd:113:9:@3350ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@3400ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@3400ns:(report note): Registers - PC: [0100], MAR: [0100], IR: [00101100]
+proc_top.vhd:113:9:@3400ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@3450ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@3450ns:(report note): Registers - PC: [0100], MAR: [0100], IR: [00101100]
+proc_top.vhd:159:13:@3450ns:(report note): Processing with PC: 0100, temp_PC: 0100, Stage: 1, IR: 00101100, MAR: 0100, OPCODE: 0010, OPERAND: 1100, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:178:33:@3450ns:(report note): Stage 2 - Incrementing PC - current value of PC: 0100
+proc_top.vhd:181:33:@3450ns:(report note): PC after increment during stage 2: 0101, 0100
+proc_top.vhd:113:9:@3450ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@3500ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@3500ns:(report note): Registers - PC: [0101], MAR: [0100], IR: [00101100]
+proc_top.vhd:113:9:@3500ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@3550ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@3550ns:(report note): Registers - PC: [0101], MAR: [0100], IR: [00101100]
+proc_top.vhd:159:13:@3550ns:(report note): Processing with PC: 0101, temp_PC: 0101, Stage: 2, IR: 00101100, MAR: 0100, OPCODE: 0010, OPERAND: 1100, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:184:33:@3550ns:(report note): Stage 3 - loading IR from memory - MAR: 0100, MEM(0): 11100000
+proc_top.vhd:189:33:@3550ns:(report note): IR after loading from memory during stage 3: temp_IR: 11100000, opcode=1110, operand=0000
+proc_top.vhd:113:9:@3550ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@3600ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@3600ns:(report note): Registers - PC: [0101], MAR: [0100], IR: [11100000]
+proc_top.vhd:113:9:@3600ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@3650ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@3650ns:(report note): Registers - PC: [0101], MAR: [0100], IR: [11100000]
+proc_top.vhd:159:13:@3650ns:(report note): Processing with PC: 0101, temp_PC: 0101, Stage: 3, IR: 11100000, MAR: 0100, OPCODE: 1110, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@3650ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@3700ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@3700ns:(report note): Registers - PC: [0101], MAR: [0100], IR: [11100000]
+proc_top.vhd:113:9:@3700ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@3750ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@3750ns:(report note): Registers - PC: [0101], MAR: [0100], IR: [11100000]
+proc_top.vhd:159:13:@3750ns:(report note): Processing with PC: 0101, temp_PC: 0101, Stage: 4, IR: 11100000, MAR: 0100, OPCODE: 1110, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@3750ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@3800ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@3800ns:(report note): Registers - PC: [0101], MAR: [0100], IR: [11100000]
+proc_top.vhd:113:9:@3800ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@3850ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@3850ns:(report note): Registers - PC: [0101], MAR: [0100], IR: [11100000]
+proc_top.vhd:159:13:@3850ns:(report note): Processing with PC: 0101, temp_PC: 0101, Stage: 5, IR: 11100000, MAR: 0100, OPCODE: 1110, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@3850ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@3900ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@3900ns:(report note): Registers - PC: [0101], MAR: [0100], IR: [11100000]
+proc_top.vhd:113:9:@3900ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@3950ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@3950ns:(report note): Registers - PC: [0101], MAR: [0100], IR: [11100000]
+proc_top.vhd:159:13:@3950ns:(report note): Processing with PC: 0101, temp_PC: 0101, Stage: 0, IR: 11100000, MAR: 0100, OPCODE: 1110, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:173:33:@3950ns:(report note): Stage 1 - Assigning PC to MAR
+proc_top.vhd:175:33:@3950ns:(report note): MAR after set from PC during stage 1. 0100
+proc_top.vhd:113:9:@3950ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@4us:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@4us:(report note): Registers - PC: [0101], MAR: [0101], IR: [11100000]
+proc_top.vhd:113:9:@4us:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@4050ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@4050ns:(report note): Registers - PC: [0101], MAR: [0101], IR: [11100000]
+proc_top.vhd:159:13:@4050ns:(report note): Processing with PC: 0101, temp_PC: 0101, Stage: 1, IR: 11100000, MAR: 0101, OPCODE: 1110, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:178:33:@4050ns:(report note): Stage 2 - Incrementing PC - current value of PC: 0101
+proc_top.vhd:181:33:@4050ns:(report note): PC after increment during stage 2: 0110, 0101
+proc_top.vhd:113:9:@4050ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@4100ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@4100ns:(report note): Registers - PC: [0110], MAR: [0101], IR: [11100000]
+proc_top.vhd:113:9:@4100ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@4150ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@4150ns:(report note): Registers - PC: [0110], MAR: [0101], IR: [11100000]
+proc_top.vhd:159:13:@4150ns:(report note): Processing with PC: 0110, temp_PC: 0110, Stage: 2, IR: 11100000, MAR: 0101, OPCODE: 1110, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:184:33:@4150ns:(report note): Stage 3 - loading IR from memory - MAR: 0101, MEM(0): 11110000
+proc_top.vhd:189:33:@4150ns:(report note): IR after loading from memory during stage 3: temp_IR: 11110000, opcode=1111, operand=0000
+proc_top.vhd:113:9:@4150ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@4200ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@4200ns:(report note): Registers - PC: [0110], MAR: [0101], IR: [11110000]
+proc_top.vhd:113:9:@4200ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@4250ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@4250ns:(report note): Registers - PC: [0110], MAR: [0101], IR: [11110000]
+proc_top.vhd:159:13:@4250ns:(report note): Processing with PC: 0110, temp_PC: 0110, Stage: 3, IR: 11110000, MAR: 0101, OPCODE: 1111, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@4250ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@4300ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@4300ns:(report note): Registers - PC: [0110], MAR: [0101], IR: [11110000]
+proc_top.vhd:113:9:@4300ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@4350ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@4350ns:(report note): Registers - PC: [0110], MAR: [0101], IR: [11110000]
+proc_top.vhd:159:13:@4350ns:(report note): Processing with PC: 0110, temp_PC: 0110, Stage: 4, IR: 11110000, MAR: 0101, OPCODE: 1111, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@4350ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@4400ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@4400ns:(report note): Registers - PC: [0110], MAR: [0101], IR: [11110000]
+proc_top.vhd:113:9:@4400ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@4450ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@4450ns:(report note): Registers - PC: [0110], MAR: [0101], IR: [11110000]
+proc_top.vhd:159:13:@4450ns:(report note): Processing with PC: 0110, temp_PC: 0110, Stage: 5, IR: 11110000, MAR: 0101, OPCODE: 1111, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@4450ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@4500ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@4500ns:(report note): Registers - PC: [0110], MAR: [0101], IR: [11110000]
+proc_top.vhd:113:9:@4500ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@4550ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@4550ns:(report note): Registers - PC: [0110], MAR: [0101], IR: [11110000]
+proc_top.vhd:159:13:@4550ns:(report note): Processing with PC: 0110, temp_PC: 0110, Stage: 0, IR: 11110000, MAR: 0101, OPCODE: 1111, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:173:33:@4550ns:(report note): Stage 1 - Assigning PC to MAR
+proc_top.vhd:175:33:@4550ns:(report note): MAR after set from PC during stage 1. 0101
+proc_top.vhd:113:9:@4550ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@4600ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@4600ns:(report note): Registers - PC: [0110], MAR: [0110], IR: [11110000]
+proc_top.vhd:113:9:@4600ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@4650ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@4650ns:(report note): Registers - PC: [0110], MAR: [0110], IR: [11110000]
+proc_top.vhd:159:13:@4650ns:(report note): Processing with PC: 0110, temp_PC: 0110, Stage: 1, IR: 11110000, MAR: 0110, OPCODE: 1111, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:178:33:@4650ns:(report note): Stage 2 - Incrementing PC - current value of PC: 0110
+proc_top.vhd:181:33:@4650ns:(report note): PC after increment during stage 2: 0111, 0110
+proc_top.vhd:113:9:@4650ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@4700ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@4700ns:(report note): Registers - PC: [0111], MAR: [0110], IR: [11110000]
+proc_top.vhd:113:9:@4700ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@4750ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@4750ns:(report note): Registers - PC: [0111], MAR: [0110], IR: [11110000]
+proc_top.vhd:159:13:@4750ns:(report note): Processing with PC: 0111, temp_PC: 0111, Stage: 2, IR: 11110000, MAR: 0110, OPCODE: 1111, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:184:33:@4750ns:(report note): Stage 3 - loading IR from memory - MAR: 0110, MEM(0): 10101010
+proc_top.vhd:189:33:@4750ns:(report note): IR after loading from memory during stage 3: temp_IR: 10101010, opcode=1010, operand=1010
+proc_top.vhd:113:9:@4750ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@4800ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@4800ns:(report note): Registers - PC: [0111], MAR: [0110], IR: [10101010]
+proc_top.vhd:113:9:@4800ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@4850ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@4850ns:(report note): Registers - PC: [0111], MAR: [0110], IR: [10101010]
+proc_top.vhd:159:13:@4850ns:(report note): Processing with PC: 0111, temp_PC: 0111, Stage: 3, IR: 10101010, MAR: 0110, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@4850ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@4900ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@4900ns:(report note): Registers - PC: [0111], MAR: [0110], IR: [10101010]
+proc_top.vhd:113:9:@4900ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@4950ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@4950ns:(report note): Registers - PC: [0111], MAR: [0110], IR: [10101010]
+proc_top.vhd:159:13:@4950ns:(report note): Processing with PC: 0111, temp_PC: 0111, Stage: 4, IR: 10101010, MAR: 0110, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@4950ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@5us:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@5us:(report note): Registers - PC: [0111], MAR: [0110], IR: [10101010]
+proc_top.vhd:113:9:@5us:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@5050ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@5050ns:(report note): Registers - PC: [0111], MAR: [0110], IR: [10101010]
+proc_top.vhd:159:13:@5050ns:(report note): Processing with PC: 0111, temp_PC: 0111, Stage: 5, IR: 10101010, MAR: 0110, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@5050ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@5100ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@5100ns:(report note): Registers - PC: [0111], MAR: [0110], IR: [10101010]
+proc_top.vhd:113:9:@5100ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@5150ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@5150ns:(report note): Registers - PC: [0111], MAR: [0110], IR: [10101010]
+proc_top.vhd:159:13:@5150ns:(report note): Processing with PC: 0111, temp_PC: 0111, Stage: 0, IR: 10101010, MAR: 0110, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:173:33:@5150ns:(report note): Stage 1 - Assigning PC to MAR
+proc_top.vhd:175:33:@5150ns:(report note): MAR after set from PC during stage 1. 0110
+proc_top.vhd:113:9:@5150ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@5200ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@5200ns:(report note): Registers - PC: [0111], MAR: [0111], IR: [10101010]
+proc_top.vhd:113:9:@5200ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@5250ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@5250ns:(report note): Registers - PC: [0111], MAR: [0111], IR: [10101010]
+proc_top.vhd:159:13:@5250ns:(report note): Processing with PC: 0111, temp_PC: 0111, Stage: 1, IR: 10101010, MAR: 0111, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:178:33:@5250ns:(report note): Stage 2 - Incrementing PC - current value of PC: 0111
+proc_top.vhd:181:33:@5250ns:(report note): PC after increment during stage 2: 1000, 0111
+proc_top.vhd:113:9:@5250ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@5300ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@5300ns:(report note): Registers - PC: [1000], MAR: [0111], IR: [10101010]
+proc_top.vhd:113:9:@5300ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@5350ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@5350ns:(report note): Registers - PC: [1000], MAR: [0111], IR: [10101010]
+proc_top.vhd:159:13:@5350ns:(report note): Processing with PC: 1000, temp_PC: 1000, Stage: 2, IR: 10101010, MAR: 0111, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:184:33:@5350ns:(report note): Stage 3 - loading IR from memory - MAR: 0111, MEM(0): 10101010
+proc_top.vhd:189:33:@5350ns:(report note): IR after loading from memory during stage 3: temp_IR: 10101010, opcode=1010, operand=1010
+proc_top.vhd:113:9:@5350ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@5400ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@5400ns:(report note): Registers - PC: [1000], MAR: [0111], IR: [10101010]
+proc_top.vhd:113:9:@5400ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@5450ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@5450ns:(report note): Registers - PC: [1000], MAR: [0111], IR: [10101010]
+proc_top.vhd:159:13:@5450ns:(report note): Processing with PC: 1000, temp_PC: 1000, Stage: 3, IR: 10101010, MAR: 0111, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@5450ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@5500ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@5500ns:(report note): Registers - PC: [1000], MAR: [0111], IR: [10101010]
+proc_top.vhd:113:9:@5500ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@5550ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@5550ns:(report note): Registers - PC: [1000], MAR: [0111], IR: [10101010]
+proc_top.vhd:159:13:@5550ns:(report note): Processing with PC: 1000, temp_PC: 1000, Stage: 4, IR: 10101010, MAR: 0111, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@5550ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@5600ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@5600ns:(report note): Registers - PC: [1000], MAR: [0111], IR: [10101010]
+proc_top.vhd:113:9:@5600ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@5650ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@5650ns:(report note): Registers - PC: [1000], MAR: [0111], IR: [10101010]
+proc_top.vhd:159:13:@5650ns:(report note): Processing with PC: 1000, temp_PC: 1000, Stage: 5, IR: 10101010, MAR: 0111, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@5650ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@5700ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@5700ns:(report note): Registers - PC: [1000], MAR: [0111], IR: [10101010]
+proc_top.vhd:113:9:@5700ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@5750ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@5750ns:(report note): Registers - PC: [1000], MAR: [0111], IR: [10101010]
+proc_top.vhd:159:13:@5750ns:(report note): Processing with PC: 1000, temp_PC: 1000, Stage: 0, IR: 10101010, MAR: 0111, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:173:33:@5750ns:(report note): Stage 1 - Assigning PC to MAR
+proc_top.vhd:175:33:@5750ns:(report note): MAR after set from PC during stage 1. 0111
+proc_top.vhd:113:9:@5750ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@5800ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@5800ns:(report note): Registers - PC: [1000], MAR: [1000], IR: [10101010]
+proc_top.vhd:113:9:@5800ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@5850ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@5850ns:(report note): Registers - PC: [1000], MAR: [1000], IR: [10101010]
+proc_top.vhd:159:13:@5850ns:(report note): Processing with PC: 1000, temp_PC: 1000, Stage: 1, IR: 10101010, MAR: 1000, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:178:33:@5850ns:(report note): Stage 2 - Incrementing PC - current value of PC: 1000
+proc_top.vhd:181:33:@5850ns:(report note): PC after increment during stage 2: 1001, 1000
+proc_top.vhd:113:9:@5850ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@5900ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@5900ns:(report note): Registers - PC: [1001], MAR: [1000], IR: [10101010]
+proc_top.vhd:113:9:@5900ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@5950ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@5950ns:(report note): Registers - PC: [1001], MAR: [1000], IR: [10101010]
+proc_top.vhd:159:13:@5950ns:(report note): Processing with PC: 1001, temp_PC: 1001, Stage: 2, IR: 10101010, MAR: 1000, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:184:33:@5950ns:(report note): Stage 3 - loading IR from memory - MAR: 1000, MEM(0): 10101010
+proc_top.vhd:189:33:@5950ns:(report note): IR after loading from memory during stage 3: temp_IR: 10101010, opcode=1010, operand=1010
+proc_top.vhd:113:9:@5950ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@6us:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@6us:(report note): Registers - PC: [1001], MAR: [1000], IR: [10101010]
+proc_top.vhd:113:9:@6us:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@6050ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@6050ns:(report note): Registers - PC: [1001], MAR: [1000], IR: [10101010]
+proc_top.vhd:159:13:@6050ns:(report note): Processing with PC: 1001, temp_PC: 1001, Stage: 3, IR: 10101010, MAR: 1000, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@6050ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@6100ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@6100ns:(report note): Registers - PC: [1001], MAR: [1000], IR: [10101010]
+proc_top.vhd:113:9:@6100ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@6150ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@6150ns:(report note): Registers - PC: [1001], MAR: [1000], IR: [10101010]
+proc_top.vhd:159:13:@6150ns:(report note): Processing with PC: 1001, temp_PC: 1001, Stage: 4, IR: 10101010, MAR: 1000, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@6150ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@6200ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@6200ns:(report note): Registers - PC: [1001], MAR: [1000], IR: [10101010]
+proc_top.vhd:113:9:@6200ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@6250ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@6250ns:(report note): Registers - PC: [1001], MAR: [1000], IR: [10101010]
+proc_top.vhd:159:13:@6250ns:(report note): Processing with PC: 1001, temp_PC: 1001, Stage: 5, IR: 10101010, MAR: 1000, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@6250ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@6300ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@6300ns:(report note): Registers - PC: [1001], MAR: [1000], IR: [10101010]
+proc_top.vhd:113:9:@6300ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@6350ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@6350ns:(report note): Registers - PC: [1001], MAR: [1000], IR: [10101010]
+proc_top.vhd:159:13:@6350ns:(report note): Processing with PC: 1001, temp_PC: 1001, Stage: 0, IR: 10101010, MAR: 1000, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:173:33:@6350ns:(report note): Stage 1 - Assigning PC to MAR
+proc_top.vhd:175:33:@6350ns:(report note): MAR after set from PC during stage 1. 1000
+proc_top.vhd:113:9:@6350ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@6400ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@6400ns:(report note): Registers - PC: [1001], MAR: [1001], IR: [10101010]
+proc_top.vhd:113:9:@6400ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@6450ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@6450ns:(report note): Registers - PC: [1001], MAR: [1001], IR: [10101010]
+proc_top.vhd:159:13:@6450ns:(report note): Processing with PC: 1001, temp_PC: 1001, Stage: 1, IR: 10101010, MAR: 1001, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:178:33:@6450ns:(report note): Stage 2 - Incrementing PC - current value of PC: 1001
+proc_top.vhd:181:33:@6450ns:(report note): PC after increment during stage 2: 1010, 1001
+proc_top.vhd:113:9:@6450ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@6500ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@6500ns:(report note): Registers - PC: [1010], MAR: [1001], IR: [10101010]
+proc_top.vhd:113:9:@6500ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@6550ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@6550ns:(report note): Registers - PC: [1010], MAR: [1001], IR: [10101010]
+proc_top.vhd:159:13:@6550ns:(report note): Processing with PC: 1010, temp_PC: 1010, Stage: 2, IR: 10101010, MAR: 1001, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:184:33:@6550ns:(report note): Stage 3 - loading IR from memory - MAR: 1001, MEM(0): 00010000
+proc_top.vhd:189:33:@6550ns:(report note): IR after loading from memory during stage 3: temp_IR: 00010000, opcode=0001, operand=0000
+proc_top.vhd:113:9:@6550ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@6600ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@6600ns:(report note): Registers - PC: [1010], MAR: [1001], IR: [00010000]
+proc_top.vhd:113:9:@6600ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@6650ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@6650ns:(report note): Registers - PC: [1010], MAR: [1001], IR: [00010000]
+proc_top.vhd:159:13:@6650ns:(report note): Processing with PC: 1010, temp_PC: 1010, Stage: 3, IR: 00010000, MAR: 1001, OPCODE: 0001, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@6650ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@6700ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@6700ns:(report note): Registers - PC: [1010], MAR: [1001], IR: [00010000]
+proc_top.vhd:113:9:@6700ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@6750ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@6750ns:(report note): Registers - PC: [1010], MAR: [1001], IR: [00010000]
+proc_top.vhd:159:13:@6750ns:(report note): Processing with PC: 1010, temp_PC: 1010, Stage: 4, IR: 00010000, MAR: 1001, OPCODE: 0001, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@6750ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@6800ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@6800ns:(report note): Registers - PC: [1010], MAR: [1001], IR: [00010000]
+proc_top.vhd:113:9:@6800ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@6850ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@6850ns:(report note): Registers - PC: [1010], MAR: [1001], IR: [00010000]
+proc_top.vhd:159:13:@6850ns:(report note): Processing with PC: 1010, temp_PC: 1010, Stage: 5, IR: 00010000, MAR: 1001, OPCODE: 0001, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@6850ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@6900ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@6900ns:(report note): Registers - PC: [1010], MAR: [1001], IR: [00010000]
+proc_top.vhd:113:9:@6900ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@6950ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@6950ns:(report note): Registers - PC: [1010], MAR: [1001], IR: [00010000]
+proc_top.vhd:159:13:@6950ns:(report note): Processing with PC: 1010, temp_PC: 1010, Stage: 0, IR: 00010000, MAR: 1001, OPCODE: 0001, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:173:33:@6950ns:(report note): Stage 1 - Assigning PC to MAR
+proc_top.vhd:175:33:@6950ns:(report note): MAR after set from PC during stage 1. 1001
+proc_top.vhd:113:9:@6950ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@7us:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@7us:(report note): Registers - PC: [1010], MAR: [1010], IR: [00010000]
+proc_top.vhd:113:9:@7us:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@7050ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@7050ns:(report note): Registers - PC: [1010], MAR: [1010], IR: [00010000]
+proc_top.vhd:159:13:@7050ns:(report note): Processing with PC: 1010, temp_PC: 1010, Stage: 1, IR: 00010000, MAR: 1010, OPCODE: 0001, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:178:33:@7050ns:(report note): Stage 2 - Incrementing PC - current value of PC: 1010
+proc_top.vhd:181:33:@7050ns:(report note): PC after increment during stage 2: 1011, 1010
+proc_top.vhd:113:9:@7050ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@7100ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@7100ns:(report note): Registers - PC: [1011], MAR: [1010], IR: [00010000]
+proc_top.vhd:113:9:@7100ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@7150ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@7150ns:(report note): Registers - PC: [1011], MAR: [1010], IR: [00010000]
+proc_top.vhd:159:13:@7150ns:(report note): Processing with PC: 1011, temp_PC: 1011, Stage: 2, IR: 00010000, MAR: 1010, OPCODE: 0001, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:184:33:@7150ns:(report note): Stage 3 - loading IR from memory - MAR: 1010, MEM(0): 00010100
+proc_top.vhd:189:33:@7150ns:(report note): IR after loading from memory during stage 3: temp_IR: 00010100, opcode=0001, operand=0100
+proc_top.vhd:113:9:@7150ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@7200ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@7200ns:(report note): Registers - PC: [1011], MAR: [1010], IR: [00010100]
+proc_top.vhd:113:9:@7200ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@7250ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@7250ns:(report note): Registers - PC: [1011], MAR: [1010], IR: [00010100]
+proc_top.vhd:159:13:@7250ns:(report note): Processing with PC: 1011, temp_PC: 1011, Stage: 3, IR: 00010100, MAR: 1010, OPCODE: 0001, OPERAND: 0100, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@7250ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@7300ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@7300ns:(report note): Registers - PC: [1011], MAR: [1010], IR: [00010100]
+proc_top.vhd:113:9:@7300ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@7350ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@7350ns:(report note): Registers - PC: [1011], MAR: [1010], IR: [00010100]
+proc_top.vhd:159:13:@7350ns:(report note): Processing with PC: 1011, temp_PC: 1011, Stage: 4, IR: 00010100, MAR: 1010, OPCODE: 0001, OPERAND: 0100, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@7350ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@7400ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@7400ns:(report note): Registers - PC: [1011], MAR: [1010], IR: [00010100]
+proc_top.vhd:113:9:@7400ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@7450ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@7450ns:(report note): Registers - PC: [1011], MAR: [1010], IR: [00010100]
+proc_top.vhd:159:13:@7450ns:(report note): Processing with PC: 1011, temp_PC: 1011, Stage: 5, IR: 00010100, MAR: 1010, OPCODE: 0001, OPERAND: 0100, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@7450ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@7500ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@7500ns:(report note): Registers - PC: [1011], MAR: [1010], IR: [00010100]
+proc_top.vhd:113:9:@7500ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@7550ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@7550ns:(report note): Registers - PC: [1011], MAR: [1010], IR: [00010100]
+proc_top.vhd:159:13:@7550ns:(report note): Processing with PC: 1011, temp_PC: 1011, Stage: 0, IR: 00010100, MAR: 1010, OPCODE: 0001, OPERAND: 0100, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:173:33:@7550ns:(report note): Stage 1 - Assigning PC to MAR
+proc_top.vhd:175:33:@7550ns:(report note): MAR after set from PC during stage 1. 1010
+proc_top.vhd:113:9:@7550ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@7600ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@7600ns:(report note): Registers - PC: [1011], MAR: [1011], IR: [00010100]
+proc_top.vhd:113:9:@7600ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@7650ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@7650ns:(report note): Registers - PC: [1011], MAR: [1011], IR: [00010100]
+proc_top.vhd:159:13:@7650ns:(report note): Processing with PC: 1011, temp_PC: 1011, Stage: 1, IR: 00010100, MAR: 1011, OPCODE: 0001, OPERAND: 0100, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:178:33:@7650ns:(report note): Stage 2 - Incrementing PC - current value of PC: 1011
+proc_top.vhd:181:33:@7650ns:(report note): PC after increment during stage 2: 1100, 1011
+proc_top.vhd:113:9:@7650ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@7700ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@7700ns:(report note): Registers - PC: [1100], MAR: [1011], IR: [00010100]
+proc_top.vhd:113:9:@7700ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@7750ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@7750ns:(report note): Registers - PC: [1100], MAR: [1011], IR: [00010100]
+proc_top.vhd:159:13:@7750ns:(report note): Processing with PC: 1100, temp_PC: 1100, Stage: 2, IR: 00010100, MAR: 1011, OPCODE: 0001, OPERAND: 0100, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:184:33:@7750ns:(report note): Stage 3 - loading IR from memory - MAR: 1011, MEM(0): 00011000
+proc_top.vhd:189:33:@7750ns:(report note): IR after loading from memory during stage 3: temp_IR: 00011000, opcode=0001, operand=1000
+proc_top.vhd:113:9:@7750ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@7800ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@7800ns:(report note): Registers - PC: [1100], MAR: [1011], IR: [00011000]
+proc_top.vhd:113:9:@7800ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@7850ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@7850ns:(report note): Registers - PC: [1100], MAR: [1011], IR: [00011000]
+proc_top.vhd:159:13:@7850ns:(report note): Processing with PC: 1100, temp_PC: 1100, Stage: 3, IR: 00011000, MAR: 1011, OPCODE: 0001, OPERAND: 1000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@7850ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@7900ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@7900ns:(report note): Registers - PC: [1100], MAR: [1011], IR: [00011000]
+proc_top.vhd:113:9:@7900ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@7950ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@7950ns:(report note): Registers - PC: [1100], MAR: [1011], IR: [00011000]
+proc_top.vhd:159:13:@7950ns:(report note): Processing with PC: 1100, temp_PC: 1100, Stage: 4, IR: 00011000, MAR: 1011, OPCODE: 0001, OPERAND: 1000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@7950ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@8us:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@8us:(report note): Registers - PC: [1100], MAR: [1011], IR: [00011000]
+proc_top.vhd:113:9:@8us:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@8050ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@8050ns:(report note): Registers - PC: [1100], MAR: [1011], IR: [00011000]
+proc_top.vhd:159:13:@8050ns:(report note): Processing with PC: 1100, temp_PC: 1100, Stage: 5, IR: 00011000, MAR: 1011, OPCODE: 0001, OPERAND: 1000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@8050ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@8100ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@8100ns:(report note): Registers - PC: [1100], MAR: [1011], IR: [00011000]
+proc_top.vhd:113:9:@8100ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@8150ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@8150ns:(report note): Registers - PC: [1100], MAR: [1011], IR: [00011000]
+proc_top.vhd:159:13:@8150ns:(report note): Processing with PC: 1100, temp_PC: 1100, Stage: 0, IR: 00011000, MAR: 1011, OPCODE: 0001, OPERAND: 1000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:173:33:@8150ns:(report note): Stage 1 - Assigning PC to MAR
+proc_top.vhd:175:33:@8150ns:(report note): MAR after set from PC during stage 1. 1011
+proc_top.vhd:113:9:@8150ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@8200ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@8200ns:(report note): Registers - PC: [1100], MAR: [1100], IR: [00011000]
+proc_top.vhd:113:9:@8200ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@8250ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@8250ns:(report note): Registers - PC: [1100], MAR: [1100], IR: [00011000]
+proc_top.vhd:159:13:@8250ns:(report note): Processing with PC: 1100, temp_PC: 1100, Stage: 1, IR: 00011000, MAR: 1100, OPCODE: 0001, OPERAND: 1000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:178:33:@8250ns:(report note): Stage 2 - Incrementing PC - current value of PC: 1100
+proc_top.vhd:181:33:@8250ns:(report note): PC after increment during stage 2: 1101, 1100
+proc_top.vhd:113:9:@8250ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@8300ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@8300ns:(report note): Registers - PC: [1101], MAR: [1100], IR: [00011000]
+proc_top.vhd:113:9:@8300ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@8350ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@8350ns:(report note): Registers - PC: [1101], MAR: [1100], IR: [00011000]
+proc_top.vhd:159:13:@8350ns:(report note): Processing with PC: 1101, temp_PC: 1101, Stage: 2, IR: 00011000, MAR: 1100, OPCODE: 0001, OPERAND: 1000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:184:33:@8350ns:(report note): Stage 3 - loading IR from memory - MAR: 1100, MEM(0): 00100000
+proc_top.vhd:189:33:@8350ns:(report note): IR after loading from memory during stage 3: temp_IR: 00100000, opcode=0010, operand=0000
+proc_top.vhd:113:9:@8350ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@8400ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@8400ns:(report note): Registers - PC: [1101], MAR: [1100], IR: [00100000]
+proc_top.vhd:113:9:@8400ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@8450ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@8450ns:(report note): Registers - PC: [1101], MAR: [1100], IR: [00100000]
+proc_top.vhd:159:13:@8450ns:(report note): Processing with PC: 1101, temp_PC: 1101, Stage: 3, IR: 00100000, MAR: 1100, OPCODE: 0010, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@8450ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@8500ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@8500ns:(report note): Registers - PC: [1101], MAR: [1100], IR: [00100000]
+proc_top.vhd:113:9:@8500ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@8550ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@8550ns:(report note): Registers - PC: [1101], MAR: [1100], IR: [00100000]
+proc_top.vhd:159:13:@8550ns:(report note): Processing with PC: 1101, temp_PC: 1101, Stage: 4, IR: 00100000, MAR: 1100, OPCODE: 0010, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@8550ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@8600ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@8600ns:(report note): Registers - PC: [1101], MAR: [1100], IR: [00100000]
+proc_top.vhd:113:9:@8600ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@8650ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@8650ns:(report note): Registers - PC: [1101], MAR: [1100], IR: [00100000]
+proc_top.vhd:159:13:@8650ns:(report note): Processing with PC: 1101, temp_PC: 1101, Stage: 5, IR: 00100000, MAR: 1100, OPCODE: 0010, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@8650ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@8700ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@8700ns:(report note): Registers - PC: [1101], MAR: [1100], IR: [00100000]
+proc_top.vhd:113:9:@8700ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@8750ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@8750ns:(report note): Registers - PC: [1101], MAR: [1100], IR: [00100000]
+proc_top.vhd:159:13:@8750ns:(report note): Processing with PC: 1101, temp_PC: 1101, Stage: 0, IR: 00100000, MAR: 1100, OPCODE: 0010, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:173:33:@8750ns:(report note): Stage 1 - Assigning PC to MAR
+proc_top.vhd:175:33:@8750ns:(report note): MAR after set from PC during stage 1. 1100
+proc_top.vhd:113:9:@8750ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@8800ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@8800ns:(report note): Registers - PC: [1101], MAR: [1101], IR: [00100000]
+proc_top.vhd:113:9:@8800ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@8850ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@8850ns:(report note): Registers - PC: [1101], MAR: [1101], IR: [00100000]
+proc_top.vhd:159:13:@8850ns:(report note): Processing with PC: 1101, temp_PC: 1101, Stage: 1, IR: 00100000, MAR: 1101, OPCODE: 0010, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:178:33:@8850ns:(report note): Stage 2 - Incrementing PC - current value of PC: 1101
+proc_top.vhd:181:33:@8850ns:(report note): PC after increment during stage 2: 1110, 1101
+proc_top.vhd:113:9:@8850ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@8900ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@8900ns:(report note): Registers - PC: [1110], MAR: [1101], IR: [00100000]
+proc_top.vhd:113:9:@8900ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@8950ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@8950ns:(report note): Registers - PC: [1110], MAR: [1101], IR: [00100000]
+proc_top.vhd:159:13:@8950ns:(report note): Processing with PC: 1110, temp_PC: 1110, Stage: 2, IR: 00100000, MAR: 1101, OPCODE: 0010, OPERAND: 0000, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:184:33:@8950ns:(report note): Stage 3 - loading IR from memory - MAR: 1101, MEM(0): 10101010
+proc_top.vhd:189:33:@8950ns:(report note): IR after loading from memory during stage 3: temp_IR: 10101010, opcode=1010, operand=1010
+proc_top.vhd:113:9:@8950ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@9us:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@9us:(report note): Registers - PC: [1110], MAR: [1101], IR: [10101010]
+proc_top.vhd:113:9:@9us:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@9050ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@9050ns:(report note): Registers - PC: [1110], MAR: [1101], IR: [10101010]
+proc_top.vhd:159:13:@9050ns:(report note): Processing with PC: 1110, temp_PC: 1110, Stage: 3, IR: 10101010, MAR: 1101, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@9050ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@9100ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@9100ns:(report note): Registers - PC: [1110], MAR: [1101], IR: [10101010]
+proc_top.vhd:113:9:@9100ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@9150ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@9150ns:(report note): Registers - PC: [1110], MAR: [1101], IR: [10101010]
+proc_top.vhd:159:13:@9150ns:(report note): Processing with PC: 1110, temp_PC: 1110, Stage: 4, IR: 10101010, MAR: 1101, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@9150ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@9200ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@9200ns:(report note): Registers - PC: [1110], MAR: [1101], IR: [10101010]
+proc_top.vhd:113:9:@9200ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@9250ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@9250ns:(report note): Registers - PC: [1110], MAR: [1101], IR: [10101010]
+proc_top.vhd:159:13:@9250ns:(report note): Processing with PC: 1110, temp_PC: 1110, Stage: 5, IR: 10101010, MAR: 1101, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@9250ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@9300ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@9300ns:(report note): Registers - PC: [1110], MAR: [1101], IR: [10101010]
+proc_top.vhd:113:9:@9300ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@9350ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@9350ns:(report note): Registers - PC: [1110], MAR: [1101], IR: [10101010]
+proc_top.vhd:159:13:@9350ns:(report note): Processing with PC: 1110, temp_PC: 1110, Stage: 0, IR: 10101010, MAR: 1101, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:173:33:@9350ns:(report note): Stage 1 - Assigning PC to MAR
+proc_top.vhd:175:33:@9350ns:(report note): MAR after set from PC during stage 1. 1101
+proc_top.vhd:113:9:@9350ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@9400ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@9400ns:(report note): Registers - PC: [1110], MAR: [1110], IR: [10101010]
+proc_top.vhd:113:9:@9400ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@9450ns:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@9450ns:(report note): Registers - PC: [1110], MAR: [1110], IR: [10101010]
+proc_top.vhd:159:13:@9450ns:(report note): Processing with PC: 1110, temp_PC: 1110, Stage: 1, IR: 10101010, MAR: 1110, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:178:33:@9450ns:(report note): Stage 2 - Incrementing PC - current value of PC: 1110
+proc_top.vhd:181:33:@9450ns:(report note): PC after increment during stage 2: 1111, 1110
+proc_top.vhd:113:9:@9450ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@9500ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@9500ns:(report note): Registers - PC: [1111], MAR: [1110], IR: [10101010]
+proc_top.vhd:113:9:@9500ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@9550ns:(report note): Run Mode Clk process - stage: 2
+proc_top.vhd:50:9:@9550ns:(report note): Registers - PC: [1111], MAR: [1110], IR: [10101010]
+proc_top.vhd:159:13:@9550ns:(report note): Processing with PC: 1111, temp_PC: 1111, Stage: 2, IR: 10101010, MAR: 1110, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:184:33:@9550ns:(report note): Stage 3 - loading IR from memory - MAR: 1110, MEM(0): 10101010
+proc_top.vhd:189:33:@9550ns:(report note): IR after loading from memory during stage 3: temp_IR: 10101010, opcode=1010, operand=1010
+proc_top.vhd:113:9:@9550ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@9600ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@9600ns:(report note): Registers - PC: [1111], MAR: [1110], IR: [10101010]
+proc_top.vhd:113:9:@9600ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@9650ns:(report note): Run Mode Clk process - stage: 3
+proc_top.vhd:50:9:@9650ns:(report note): Registers - PC: [1111], MAR: [1110], IR: [10101010]
+proc_top.vhd:159:13:@9650ns:(report note): Processing with PC: 1111, temp_PC: 1111, Stage: 3, IR: 10101010, MAR: 1110, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@9650ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@9700ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@9700ns:(report note): Registers - PC: [1111], MAR: [1110], IR: [10101010]
+proc_top.vhd:113:9:@9700ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@9750ns:(report note): Run Mode Clk process - stage: 4
+proc_top.vhd:50:9:@9750ns:(report note): Registers - PC: [1111], MAR: [1110], IR: [10101010]
+proc_top.vhd:159:13:@9750ns:(report note): Processing with PC: 1111, temp_PC: 1111, Stage: 4, IR: 10101010, MAR: 1110, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@9750ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@9800ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@9800ns:(report note): Registers - PC: [1111], MAR: [1110], IR: [10101010]
+proc_top.vhd:113:9:@9800ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@9850ns:(report note): Run Mode Clk process - stage: 5
+proc_top.vhd:50:9:@9850ns:(report note): Registers - PC: [1111], MAR: [1110], IR: [10101010]
+proc_top.vhd:159:13:@9850ns:(report note): Processing with PC: 1111, temp_PC: 1111, Stage: 5, IR: 10101010, MAR: 1110, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:113:9:@9850ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@9900ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@9900ns:(report note): Registers - PC: [1111], MAR: [1110], IR: [10101010]
+proc_top.vhd:113:9:@9900ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@9950ns:(report note): Run Mode Clk process - stage: 0
+proc_top.vhd:50:9:@9950ns:(report note): Registers - PC: [1111], MAR: [1110], IR: [10101010]
+proc_top.vhd:159:13:@9950ns:(report note): Processing with PC: 1111, temp_PC: 1111, Stage: 0, IR: 10101010, MAR: 1110, OPCODE: 1010, OPERAND: 1010, MEM[0]: 00001001, MEM[1]: 00011010
+proc_top.vhd:173:33:@9950ns:(report note): Stage 1 - Assigning PC to MAR
+proc_top.vhd:175:33:@9950ns:(report note): MAR after set from PC during stage 1. 1110
+proc_top.vhd:113:9:@9950ns:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+proc_top.vhd:145:10:@10us:(report note): Run Mode Clk process - stage: 1
+proc_top.vhd:50:9:@10us:(report note): Registers - PC: [1111], MAR: [1111], IR: [10101010]
+proc_top.vhd:113:9:@10us:(report note): Reset Process - rst: 0, run_mode: 1, reset active: 0
+/usr/bin/ghdl-mcode:info: simulation stopped by --stop-time @10us
