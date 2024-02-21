@@ -15,7 +15,6 @@ entity proc_top is
         mem_toggle      : in STD_LOGIC
     );
 end proc_top;
-
 architecture Behavioral of proc_top is
 
 
@@ -28,6 +27,7 @@ architecture Behavioral of proc_top is
     signal IR   : STD_LOGIC_VECTOR(7 downto 0) := "00000000";
     signal ACC  : STD_LOGIC_VECTOR(7 downto 0) := "00000000";
     signal B    : STD_LOGIC_VECTOR(7 downto 0) := "00000000";
+    signal OUTPUT   : STD_LOGIC_VECTOR(7 downto 0) := "00000000";
     -- define a memory type
 
     -- memory
@@ -45,11 +45,22 @@ architecture Behavioral of proc_top is
 
     signal run_mode : std_logic := '0';
 
+    signal opcode : std_logic_vector(3 downto 0) := "0000";
+    signal operand : std_logic_vector(3 downto 0) := "0000";
+    signal stage_debug_signal : integer := 0;
+
+
+
     procedure report_registers is
     begin
-        Report "Registers - PC: [" & to_string(PC) & "]" &
+        Report "Registers - STAGE: [" & to_string(stage_debug_signal) & "], PC: [" & to_string(PC) & "]" &
         ", MAR: [" & to_string(MAR) & "]" &
-        ", IR: [" & to_string(IR) & "]";
+        ", IR: [" & to_string(IR) & "]" &
+        ", OPCODE: [" & to_string(opcode) & "]" &
+        ", OPERAND: [" & to_string(operand) & "]" &
+        ", ACC: [" & to_string(ACC) & "]" &
+        ", B: [" & to_string(B) & "]" &
+        ", OUTPUT: [" & to_string(OUTPUT) & "]";
 
     end procedure report_registers;
 
@@ -70,10 +81,10 @@ architecture Behavioral of proc_top is
         end if;
     end function;
 
-    function getOperand(op : std_logic_vector(3 downto 0); operand: std_logic_vector(3 downto 0)) return string is
+    function getOperand(op : std_logic_vector(3 downto 0); v_operand: std_logic_vector(3 downto 0)) return string is
     begin
         if op = "0000" or op = "0001" or op = "0010" then
-            return to_hstring(operand) & "H";
+            return to_hstring(v_operand) & "H";
         else 
             return "";
         end if;
@@ -81,17 +92,17 @@ architecture Behavioral of proc_top is
     
 
     procedure report_memory is
-        variable opcode : std_logic_vector(3 downto 0);
-        variable operand : std_logic_vector(3 downto 0);
+        variable v_opcode : std_logic_vector(3 downto 0);
+        variable v_operand : std_logic_vector(3 downto 0);
         variable value : std_logic_vector(7 downto 0);
     begin
         for i in 0 to 15 loop
             value := MEMORY(i);
-            opcode := value(7 downto 4);
-            operand := value(3 downto 0);
+            v_opcode := value(7 downto 4);
+            v_operand := value(3 downto 0);
             
             Report to_hstring(to_unsigned(i, 4)) & ":  " & to_hstring(value) & "  " & 
-                getOp(opcode) & " " & getOperand(opcode, operand);
+                getOp(v_opcode) & " " & getOperand(v_opcode, v_operand);
         end loop;
     end procedure;
 
@@ -138,9 +149,9 @@ begin
     process(clk, rst, run_mode)
         variable temp_PC : std_logic_vector(3 downto 0) := "0000";
         variable temp_IR : std_logic_vector(7 downto 0) := "00000000";
-        variable opcode : std_logic_vector(3 downto 0) := "0000";
-        variable operand : std_logic_vector(3 downto 0) := "0000";
-        variable stage : integer := 0;
+        -- variable opcode : std_logic_vector(3 downto 0) := "0000";
+        -- variable operand : std_logic_vector(3 downto 0) := "0000";
+         variable stage : integer := 0;
     begin
          Report "Run Mode Clk process - stage: " & to_string(stage);
          report_registers;
@@ -156,46 +167,79 @@ begin
 --        elsif run_mode = '1' then 
         if run_mode = '1' and rst = '0' and rising_edge(clk) then 
 
-            Report "Processing with PC: " & to_string(PC) & 
-            ", temp_PC: " & to_string(temp_PC) &
-        --    ", counter: " & to_string(counter) &
-            ", Stage: " & to_string(stage) &
-            ", IR: " & to_string(IR) &
-            ", MAR: " & to_string(MAR) &
-            ", OPCODE: " & to_string(opcode) &
-            ", OPERAND: " & to_string(operand) &
-            ", MEM[0]: " & to_string(MEMORY(0)) & 
-            ", MEM[1]: " & to_string(MEMORY(1));
+            Report "Processing RUN Logic";
+            report_registers;
+
 --                case counter is
             case stage is
 --                    when "000001" => 
                 when 0 => 
-                                report "Stage 1 - Assigning PC to MAR";
-                                MAR <= PC;
-                                report "MAR after set from PC during stage 1. " & to_string(MAR);
+                    report "Stage 1 - Assigning PC to MAR";
+                    MAR <= PC;
+                    report "MAR after set from PC during stage 1. " & to_string(MAR);
 --                    when "000010" => 
                 when 1 => 
-                                report "Stage 2 - Incrementing PC - current value of PC: " & to_string(PC);
-                                temp_PC := STD_LOGIC_VECTOR(unsigned(PC) + 1);
-                                PC <= temp_PC;
-                                report "PC after increment during stage 2: " & to_string(temp_PC) & ", " & to_string(PC);
+                    report "Stage 2 - Incrementing PC - current value of PC: " & to_string(PC);
+                    temp_PC := STD_LOGIC_VECTOR(unsigned(PC) + 1);
+                    PC <= temp_PC;
+                    report "PC after increment during stage 2: " & to_string(temp_PC) & ", " & to_string(PC);
 --                   when "000100" => 
                 when 2 => 
-                                report "Stage 3 - loading IR from memory - MAR: " & to_string(MAR) & ", MEM(0): " & to_string(MEMORY(to_integer(unsigned(MAR))));
-                                temp_IR := MEMORY(to_integer(unsigned(MAR)));
-                                IR <= temp_IR;
-                                opcode := temp_IR(7 downto 4);
-                                operand := temp_IR(3 downto 0);
-                                report "IR after loading from memory during stage 3: temp_IR: " & to_string(temp_IR) & 
-                                    ", opcode=" & to_string(opcode) & ", operand=" & to_string(operand);
+                    report "Stage 3 - loading IR from memory - MAR: " & to_string(MAR) & ", MEM(0): " & to_string(MEMORY(to_integer(unsigned(MAR))));
+                    temp_IR := MEMORY(to_integer(unsigned(MAR)));
+                    IR <= temp_IR;
+                    opcode <= temp_IR(7 downto 4);
+                    operand <= temp_IR(3 downto 0);
+                    report "IR after loading from memory during stage 3: temp_IR: " & to_string(temp_IR) & 
+                        ", opcode=" & to_string(opcode) & ", operand=" & to_string(operand);
+                when 3 =>
+                    report "Stage 4";
+                    case opcode is
+                        when "0000" =>
+                            MAR <= operand;
+                        when "0001" =>
+                            MAR <= operand;
+                        when "0010" =>
+                            MAR <= operand;
+                        when "1110" =>
+                            OUTPUT <= ACC;
+                        when others => null;
+                    end case;
+                when 4 =>
+                    report "Stage 5";
+                    case opcode is
+                        when "0000" => 
+                            ACC <= MEMORY(to_integer(unsigned(MAR)));
+                        when "0001" =>
+                            B <= MEMORY(to_integer(unsigned(MAR)));
+                        when "0010" =>
+                            B <= MEMORY(to_integer(unsigned(MAR)));
+                        when others => null;
+                    end case;
+                        
+                when 5 =>
+                    report "Stage 6";
+                    case opcode is
+                        when "0000" =>
+                            --NOP;
+                        when "0001" =>
+                            ACC <= STD_LOGIC_VECTOR(unsigned(ACC) + unsigned(B)); 
+                        when "0010" =>
+                            ACC <= STD_LOGIC_VECTOR(unsigned(ACC) - unsigned(B));
+                        when others => null;
+                    end case;
                 when others => null;
 
             end case;
             -- update stage
             stage := stage + 1;
             if stage >= 6 then
+                -- reset stage to zero also clear opcode and operand
                 stage := 0;
+                opcode <= (others => 'U');
+                operand <= (others => 'U');
             end if;
+            stage_debug_signal <= stage;
         end if;
     end process;
 
