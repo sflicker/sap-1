@@ -5,9 +5,10 @@ use work.mytypes.all;
 
 entity proc_top is
     Port (
-        clk             : in STD_LOGIC;                 -- clk
+--        clk             : in STD_LOGIC;                 -- clk
         rst             : in STD_LOGIC;                 -- rst
         manual_toggle   : in STD_LOGIC;                 -- toggle to enter setup mode. also disables run mode
+        pulse_toggle    : in STD_LOGIC;
         run_toggle      : in STD_LOGIC;
         addr            : in STD_LOGIC_VECTOR(3 downto 0);     -- addr for manual data io 
         data_in         : in STD_LOGIC_VECTOR(7 downto 0);  -- d        Report "Memory " & result.g
@@ -17,7 +18,9 @@ entity proc_top is
 end proc_top;
 architecture Behavioral of proc_top is
 
-
+    signal base_clock : STD_LOGIC := '0';
+    signal clk :  STD_LOGIC := '0'; 
+    signal clk_bar : STD_LOGIC := '1';
 
     -- 4 bit registers
     signal MAR  : STD_LOGIC_VECTOR(3 downto 0) := "0000";
@@ -28,6 +31,9 @@ architecture Behavioral of proc_top is
     signal ACC  : STD_LOGIC_VECTOR(7 downto 0) := "00000000";
     signal B    : STD_LOGIC_VECTOR(7 downto 0) := "00000000";
     signal OUTPUT   : STD_LOGIC_VECTOR(7 downto 0) := "00000000";
+
+    signal hlt : STD_LOGIC := '0';
+    
     -- define a memory type
 
     -- memory
@@ -48,7 +54,6 @@ architecture Behavioral of proc_top is
     signal opcode : std_logic_vector(3 downto 0) := "0000";
     signal operand : std_logic_vector(3 downto 0) := "0000";
     signal stage_debug_signal : integer := 0;
-
 
 
     procedure report_registers is
@@ -108,6 +113,23 @@ architecture Behavioral of proc_top is
 
 
 begin
+
+
+
+    clk_process : entity work.clock 
+        port map(
+            clk => base_clock
+        );
+
+    clk_controller : entity work.clock_controller
+        port map(
+            clk_in => base_clock,
+            mode => manual_toggle,
+            pulse => pulse_toggle,
+            hlt => hlt,
+            clk_out => clk,
+            clk_out_bar => clk_bar
+        );
 
     -- initialize_ram_port : process
     -- begin
@@ -203,6 +225,8 @@ begin
                             MAR <= operand;
                         when "1110" =>
                             OUTPUT <= ACC;
+                        when "1111" =>
+                            hlt <= '1';
                         when others => null;
                     end case;
                 when 4 =>

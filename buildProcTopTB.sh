@@ -9,6 +9,9 @@ ghdl --clean
 echo "Compiling modules"
 #compile
 ghdl -a --std=08 -fsynopsys mytypes.vhd
+ghdl -a --std=08 -fsynopsys clock.vhd
+ghdl -a --std=08 -fsynopsys single_pulse_generator.vhd
+ghdl -a --std=08 -fsynopsys clock_controller.vhd
 #ghdl -a --std=08 -fsynopsys d_flip_flop.vhd 
 #ghdl -a --std=08 -fsynopsys ring_counter_6bit.vhd
 ghdl -a --std=08 -fsynopsys proc_top.vhd

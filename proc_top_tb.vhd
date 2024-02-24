@@ -7,7 +7,7 @@ entity proc_top_tb is
 end proc_top_tb;
 
 architecture Behavioral of proc_top_tb is
-    signal clk :  STD_LOGIC := '0';
+--    signal clk :  STD_LOGIC := '0';
     signal rst : STD_LOGIC := '0';
 --    signal run_mode : STD_LOGIC := '0';
     signal manual_toggle : STD_LOGIC := '0';
@@ -16,6 +16,7 @@ architecture Behavioral of proc_top_tb is
     signal run_toggle : STD_LOGIC := '0';
     signal addr : STD_LOGIC_VECTOR(3 downto 0);
     signal data_in : STD_LOGIC_VECTOR(7 downto 0);
+    signal pulse_toggle : STD_LOGIC := '0';
 
     type mem_array_type is array (natural range <>) of std_logic_vector(7 downto 0);
     constant init_mem : mem_array_type := (
@@ -27,9 +28,10 @@ begin
 
     proc : entity work.proc_top
     port map(
-        clk => clk, 
+--        clk => clk, 
         rst => rst, 
         manual_toggle => manual_toggle,
+        pulse_toggle => pulse_toggle,
         run_toggle => run_toggle,
         addr => addr,
         data_in => data_in,
@@ -37,14 +39,18 @@ begin
         mem_toggle => mem_toggle
     );
 
-    clk_process :
-    process
-    begin
-        clk <= '0';
-        wait for 50 ns;
-        clk <= '1';
-        wait for 50 ns;
-    end process;
+    -- clk_process : entity work.clock 
+    --     port map(
+    --         clk => clk
+    --     );
+
+    -- process
+    -- begin
+    --     clk <= '0';
+    --     wait for 50 ns;
+    --     clk <= '1';
+    --     wait for 50 ns;
+    -- end process;
 
     th:
         process
