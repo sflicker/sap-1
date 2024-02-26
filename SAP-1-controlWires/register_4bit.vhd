@@ -11,11 +11,11 @@ entity register_4bit is
 		ID : string 	-- adding an identifier
 	);
     Port (
-		data_in      : in STD_LOGIC_VECTOR(3 downto 0);
-        clk          : in STD_LOGIC;
-        rst          : in STD_LOGIC;
+        clk          : in STD_LOGIC;         -- clock
+        clr          : in STD_LOGIC;		 -- clear
         enable_write : in STD_LOGIC;
 		enable_read	 : in STD_LOGIC;
+		data_in      : in STD_LOGIC_VECTOR(3 downto 0);
         data_out     : out STD_LOGIC_VECTOR(3 downto 0)
 	);
 end DataRegister;
@@ -28,7 +28,7 @@ begin
 		if rst = '1' then
 			report "DataRegister instance " & ID & " Reset";
 			register <= (others => '0');
-			
+
 		elsif rising_edge(clk) then
 			if enable_write = '1' then
 				register <= data_in;

@@ -11,11 +11,11 @@ entity register_8bit is
 		ID : string 	-- adding an identifier
 	);
     Port (
-		data_in      : in STD_LOGIC_VECTOR(7 downto 0);
-        clk          : in STD_LOGIC;
-        rst          : in STD_LOGIC;
+        clk          : in STD_LOGIC;          -- clock
+        clr          : in STD_LOGIC;          -- clear
         enable_write : in STD_LOGIC;
 		enable_read  : in STD_LOGIC;
+		data_in      : in STD_LOGIC_VECTOR(7 downto 0);
         data_out     : out STD_LOGIC_VECTOR(7 downto 0)
 	);
 end DataRegister;
@@ -23,9 +23,9 @@ end DataRegister;
 architecture Behavioral of register_8bit is
 	signal register : STD_LOGIC_VECTOR(7 downto 0);
 begin
-	process(clk, rst)
+	process(clk, clr)
 	begin
-		if rst = '1' then
+		if clr = '1' then
 			report "DataRegister instance " & ID & " Reset";
 			register <= (others => '0');
 			
