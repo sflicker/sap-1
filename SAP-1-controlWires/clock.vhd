@@ -4,6 +4,10 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity clock is
+    Generic (
+        HighDuration : time := 100 ns;
+        LowDuration : time := 100 ns
+    );
     Port (
         clk : out STD_LOGIC
     );
@@ -15,8 +19,8 @@ begin
     process
     begin
         clk <= '0';
-        wait for 50 ns;
+        wait for HighDuration;
         clk <= '1';
-        wait for 50 ns;
+        wait for LowDuration;
     end process;
 end behavioral;

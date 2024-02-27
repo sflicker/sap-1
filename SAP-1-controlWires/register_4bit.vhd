@@ -8,7 +8,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity register_4bit is
 	Generic (
-		ID : string 	-- adding an identifier
+		ID : string := ""	-- adding an identifier
 	);
     Port (
         clk          : in STD_LOGIC;         -- clock
