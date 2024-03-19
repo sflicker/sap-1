@@ -20,6 +20,13 @@ architecture behavioral of clock_controller is
     signal and1_out : STD_LOGIC;
     signal and2_out : STD_LOGIC;
 begin
+
+    clock_converter : entitry work.clock_converter
+        (
+            clk_in_100MHZ : in std_logic;
+            
+        )
+
     single_pulse_generator : entity work.single_pulse_generator
         port map(
             clk => clk_in,

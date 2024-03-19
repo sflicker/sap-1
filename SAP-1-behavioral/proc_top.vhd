@@ -10,10 +10,11 @@ entity proc_top is
         manual_toggle   : in STD_LOGIC;                 -- toggle to enter setup mode. also disables run mode
         pulse_toggle    : in STD_LOGIC;
         run_toggle      : in STD_LOGIC;
-        addr            : in STD_LOGIC_VECTOR(3 downto 0);     -- addr for manual data io 
-        data_in         : in STD_LOGIC_VECTOR(7 downto 0);  -- d        Report "Memory " & result.g
         io_mode         : in STD_LOGIC;
-        mem_toggle      : in STD_LOGIC
+        load_memory     : in STD_LOGIC;
+        loading         : out STD_LOGIC;
+        running         : out STD_LOGIC;
+        output          : out STD_LOGIC_VECTOR(7 downto 0)
     );
 end proc_top;
 architecture Behavioral of proc_top is
@@ -30,14 +31,27 @@ architecture Behavioral of proc_top is
     signal IR   : STD_LOGIC_VECTOR(7 downto 0) := "00000000";
     signal ACC  : STD_LOGIC_VECTOR(7 downto 0) := "00000000";
     signal B    : STD_LOGIC_VECTOR(7 downto 0) := "00000000";
-    signal OUTPUT   : STD_LOGIC_VECTOR(7 downto 0) := "00000000";
+    signal OUTPUT_sig   : STD_LOGIC_VECTOR(7 downto 0) := "00000000";
 
     signal hlt : STD_LOGIC := '0';
+    
+    signal addr         : STD_LOGIC_VECTOR(3 downto 0);     -- addr for manual data io 
+    signal data_in      : STD_LOGIC_VECTOR(7 downto 0);  -- d        Report "Memory " & result.g
+    signal mem_toggle   : STD_LOGIC;
+
+
+  --  type mem_array_type is array (natural range <>) of std_logic_vector(7 downto 0);
+    constant init_mem : memory_array_type := (
+        "00001001","00011010", "00011011", "00101100",
+        "11100000", "11110000", "10101010", "10101010", 
+        "10101010", "00010000", "00010100", "00011000",
+        "00100000", "10101010", "10101010", "10101010");
+        
     
     -- define a memory type
 
     -- memory
-    signal MEMORY : memory_type := (others => (others => '0'));
+    signal MEMORY : memory_array_type := default_memory_array;
 
     -- 6 bit counter
 --    signal counter : STD_LOGIC_VECTOR(5 downto 0) := "000000";
@@ -54,6 +68,9 @@ architecture Behavioral of proc_top is
     signal opcode : std_logic_vector(3 downto 0) := "0000";
     signal operand : std_logic_vector(3 downto 0) := "0000";
     signal stage_debug_signal : integer := 0;
+    
+    signal load_ready : std_logic := '0';
+--    signal loading : std_logic := '0';
 
 
     procedure report_registers is
@@ -65,7 +82,7 @@ architecture Behavioral of proc_top is
         ", OPERAND: [" & to_string(operand) & "]" &
         ", ACC: [" & to_string(ACC) & "]" &
         ", B: [" & to_string(B) & "]" &
-        ", OUTPUT: [" & to_string(OUTPUT) & "]";
+        ", OUTPUT: [" & to_string(OUTPUT_sig) & "]";
 
     end procedure report_registers;
 
@@ -114,7 +131,22 @@ architecture Behavioral of proc_top is
 
 begin
 
-
+    output <= output_sig;
+    
+    mem_loader : entity work.memory_loader
+        Generic Map (
+            MEMORY_CONTENT => init_mem
+        )
+        port Map(
+            clk => clk,
+            load => load_memory,
+            start_addr => "0000",
+            load_ready => load_ready,
+            loading => loading,
+            mem_addr => addr,
+            mem_data => data_in,
+            mem_set => mem_toggle
+        );
 
     clk_process : entity work.clock 
         port map(
@@ -224,7 +256,7 @@ begin
                         when "0010" =>
                             MAR <= operand;
                         when "1110" =>
-                            OUTPUT <= ACC;
+                            OUTPUT_sig <= ACC;
                         when "1111" =>
                             hlt <= '1';
                         when others => null;

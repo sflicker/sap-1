@@ -2,7 +2,13 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 package mytypes is
-type memory_type is array (0 to 15) of STD_LOGIC_VECTOR(7 downto 0);
+type memory_array_type is array (0 to 15) of STD_LOGIC_VECTOR(7 downto 0);
+constant default_memory_array : memory_array_type := ( 
+    X"00", X"00", X"00", X"00",
+    X"00", X"00", X"00", X"00", 
+    X"00", X"00", X"00", X"00", 
+    X"00", X"00", X"00", X"00" );
+
 function format_reg_contents(reg : std_logic_vector) return string;
 
 end mytypes;
