@@ -11,7 +11,7 @@ entity clock_controller is
         rst : in STD_LOGIC;          
         run_mode : in STD_LOGIC;
         pulse : IN STD_LOGIC;
-        hlt : in STD_LOGIC;
+        hltbar : in STD_LOGIC;
         clk_out_1HZ : out STD_LOGIC;
         clk_out_1HZ_bar : out STD_LOGIC;
         clk_out_1KHZ : out STD_LOGIC
@@ -53,7 +53,7 @@ begin
             pulse_out => clock_pulse
         );
     
-    clk_out_1HZ <= or_out and not hlt;
+    clk_out_1HZ <= or_out and hltbar;
     clk_out_1HZ_bar <= not clk_out_1HZ;
     or_out <= and1_out or and2_out;
     and2_out <= not run_mode and clock_pulse;

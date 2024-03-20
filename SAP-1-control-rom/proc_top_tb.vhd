@@ -42,6 +42,7 @@ signal rst : STD_LOGIC;
 signal clk : STD_LOGIC;
 signal run_mode : STD_LOGIC;
 signal pulse : STD_LOGIC;
+signal hltbar_signal : STD_LOGIC;
 begin
     proc_top : entity work.proc_top
         generic map (
@@ -52,6 +53,7 @@ begin
             run_mode => run_mode,
             pulse => pulse,
             rst => rst,
+            hltbar => hltbar_signal,
             s7_anodes_out => s7_anodes_out,
             s7_cathodes_out => s7_cathodes_out
         );
@@ -66,6 +68,7 @@ begin
     test: process
     begin
         Report "Staring SAP-1 Processor Simulation";
+        hltbar_signal <= '1';
         rst <= '0';
         run_mode <= '0';
         wait for 200 ns;

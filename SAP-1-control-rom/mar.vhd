@@ -12,23 +12,19 @@ entity MAR is
 end MAR;
 
 architecture behavior of MAR is 
-    signal internal_data : STD_LOGIC_VECTOR(3 downto 0);
 begin
-    process(clr)
+    
+    process(clk, clr)
+        variable internal_data : STD_LOGIC_VECTOR(3 downto 0);
     begin
         if clr = '1' then
-            internal_data <= (others => '0');
+            internal_data := "0000";
+        elsif rising_edge(clk) and LMBar = '0' then
+            internal_data := mar_in;
         end if;
+        mar_out <= internal_data;
     end process;
     
-    process(clk)
-    begin
-        if rising_edge(clk) and LMBar = '0' then
-            internal_data <= mar_in;
-        end if;
-    end process;
-    
-    mar_out <= internal_data;
 end behavior;    
     
     

@@ -59,14 +59,20 @@ architecture Behavioral of ram_bank is
         12 => "00100000",         -- CH   20H
         others => (others => '0'));
 begin
-    process(clk) 
-    begin    
-        if rising_edge(clk) then
-        -- current version is read only memory
---            if LBar = '0' then
---                RAM(to_integer(unsigned(addr))) <= data_in;
---            end if;
-            ram_data_out <= RAM(to_integer(unsigned(addr)));
-        end if;
+    -- dont use clock for ram
+
+    process(addr)
+    begin
+        ram_data_out <= RAM(to_integer(unsigned(addr)));
     end process;
+--     process(clk) 
+--     begin    
+--         if rising_edge(clk) then
+--         -- current version is read only memory
+-- --            if LBar = '0' then
+-- --                RAM(to_integer(unsigned(addr))) <= data_in;
+-- --            end if;
+--             ram_data_out <= RAM(to_integer(unsigned(addr)));
+--         end if;
+--     end process;
 end Behavioral;

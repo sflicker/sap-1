@@ -65,7 +65,8 @@ entity proc_controller is
     LABar : out STD_LOGIC;                        -- LOAD Accumulator register from WBus -- enable low
     Su : out STD_LOGIC;                           -- operation for ALU. 0 - ADD, 1 - Subtract
     LBBar : out STD_LOGIC;                        -- LOAD B register from WBus - eanble low
-    LOBar : out STD_LOGIC        
+    LOBar : out STD_LOGIC;
+    HLTBar : out STD_LOGIC        
     );
 end proc_controller;
 
@@ -116,6 +117,9 @@ architecture Behavioral of proc_controller is
 
 begin
 
+    HLTBAR <= '0' when opcode = "1111" else
+              '1';
+
     normal_run_mode:
         process(clk, rst, run_mode)
             variable stage : integer := 1;
@@ -131,13 +135,11 @@ begin
                     control_word_index := std_logic_vector(unsigned(control_word_index) + 1);
                 end if;
 
-                if stage >= 6 then
-                    stage := 1;
-                else 
-                    stage := stage + 1;
-                end if;
-
                 control_word := CONTROL_ROM(to_integer(unsigned(control_word_index)));
+
+                Report "Stage: " & to_string(stage) 
+                    & ", control_word_index: " & to_string(control_word_index) 
+                    & ", control_word: " & to_string(control_word) & ", opcode: " & to_string(opcode);
 
                 control_word_signal <= control_word;
                 control_word_index_signal <= control_word_index;
@@ -151,10 +153,14 @@ begin
                 LOBar <= control_word(9);
 
                 stage_counter <= stage;
+    
 
-                Report "Stage: " & to_string(stage) 
-                    & ", control_word_index: " & to_string(control_word_index) 
-                    & ", control_word: " & to_string(control_word);
+                if stage >= 6 then
+                    stage := 1;
+                else 
+                    stage := stage + 1;
+                end if;
+
             end if;
 
         end process;
