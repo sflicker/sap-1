@@ -181,18 +181,26 @@ begin
             b => b_data_signal,
             alu_out => alu_data_signal
             );
+
+    OUTPUT_REG : entity work.output
+            port map (
+                clk => clk_1HZ_signal,
+                LOBar => LOBar_signal,
+                output_in => w_bus_data_signal,
+                output_out => display_data(7 downto 0)
+            );
         
-    --   GENERATING_FPGA_OUTPUT : if SIMULATION_MODE = false
-    --     generate  
-    --         display_controller : entity work.display_controller
-    --         port map(
-    --             clk => clk_1KHZ_signal,
-    --             rst => rst,
-    --             data_in => display_data,
-    --             anodes_out => s7_anodes_out,
-    --             cathodes_out => s7_cathodes_out
-    --         );
-    --     end generate;
+      GENERATING_FPGA_OUTPUT : if SIMULATION_MODE = false
+        generate  
+            display_controller : entity work.display_controller
+            port map(
+                clk => clk_1KHZ_signal,
+                rst => rst,
+                data_in => display_data,
+                anodes_out => s7_anodes_out,
+                cathodes_out => s7_cathodes_out
+            );
+        end generate;
                               
     -- log:
     --     process(clk_in)
