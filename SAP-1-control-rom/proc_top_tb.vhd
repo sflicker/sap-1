@@ -31,8 +31,14 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+-- Tests
+-- PowerOn    - just initiallize but don't run
+-- Execute    - initialize then run
+
 entity proc_top_tb is
---  Port ( );
+    generic (
+        Test_Name : String := "PowerOn"
+    );
 end proc_top_tb;
 
 architecture Behavioral of proc_top_tb is
@@ -41,6 +47,7 @@ signal s7_cathodes_out : STD_LOGIC_VECTOR(6 downto 0);
 signal rst : STD_LOGIC;
 signal clk : STD_LOGIC;
 signal run_mode : STD_LOGIC;
+signal run_toggle : STD_LOGIC;
 signal pulse : STD_LOGIC;
 signal hltbar_signal : STD_LOGIC;
 begin
@@ -51,6 +58,7 @@ begin
         port map(
             clk_in => clk,
             run_mode => run_mode,
+            run_toggle => run_toggle,
             pulse => pulse,
             rst => rst,
             hltbar => hltbar_signal,
@@ -67,18 +75,33 @@ begin
 
     test: process
     begin
-        Report "Staring SAP-1 Processor Simulation";
-        hltbar_signal <= '1';
-        rst <= '0';
-        run_mode <= '0';
-        wait for 200 ns;
 
-        wait for 300 ns;
-        run_mode <= '1';
-        wait for 200 ns;
-        rst <= '1';
-        wait for 200 ns;
-        rst <= '0';
+        if Test_Name = "PowerOn" then
+            Report "Starting SAP-1 PowerOn Test";
+            hltbar_signal <= '1';
+            rst <= '0';
+            run_mode <= '0';
+            wait for 200 ns;
+        elsif Test_Name = "Execute" then
+
+            Report "Starting SAP-1 Execute Test";
+            hltbar_signal <= '1';
+            rst <= '0';
+            run_mode <= '0';
+            run_toggle <= '0';
+            wait for 200 ns;
+
+            wait for 300 ns;
+            run_mode <= '1';
+            wait for 200 ns;
+            rst <= '1';
+            wait for 200 ns;
+            rst <= '0';
+            run_toggle <= '1';
+            wait for 200 ns;
+            run_toggle <= '0';
+            wait for 500 ns;
+        end if; 
 
         wait;
     end process;

@@ -41,6 +41,7 @@ ghdl -e --std=08 -fsynopsys -v proc_top_tb
 
 echo "Running Test Bench"
 #run
-ghdl -r --std=08 -fsynopsys -v proc_top_tb --stop-time=10000ns --vcd=proc_top_tb.vcd
+ghdl -r --std=08 -fsynopsys -v proc_top_tb -gTest_Name="PowerOn" --stop-time=1000ns --vcd=PowerOnTest.vcd
+ghdl -r --std=08 -fsynopsys -v proc_top_tb -gTest_Name="Execute" --stop-time=10000ns --vcd=ExecuteTest.vcd
 
 

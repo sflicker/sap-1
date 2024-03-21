@@ -56,17 +56,20 @@ entity proc_controller is
     clk : in STD_LOGIC;
     rst : in STD_LOGIC;
     run_mode : in STD_LOGIC;
+    run_toggle : in STD_LOGIC;
     opcode : in STD_LOGIC_VECTOR(3 downto 0);          -- 5 opcodes in model, 4 bits of instruction form the opcode
     --control_word : out STD_LOGIC_VECTOR(3 downto 0)    -- 4 bits control word
     wbus_sel : out STD_LOGIC_VECTOR(2 downto 0);
     Cp  : out STD_LOGIC;                          -- increment program counter by one
+    ClrPC : out STD_LOGIC;
     LMBar : out STD_LOGIC;                        -- Load MAR register from WBus - enable low
     LIBar : out STD_LOGIC;                        -- LOAD IR register from WBus - enable low
     LABar : out STD_LOGIC;                        -- LOAD Accumulator register from WBus -- enable low
     Su : out STD_LOGIC;                           -- operation for ALU. 0 - ADD, 1 - Subtract
     LBBar : out STD_LOGIC;                        -- LOAD B register from WBus - eanble low
     LOBar : out STD_LOGIC;
-    HLTBar : out STD_LOGIC        
+    HLTBar : out STD_LOGIC;
+    running : out STD_LOGIC
     );
 end proc_controller;
 
@@ -76,6 +79,7 @@ architecture Behavioral of proc_controller is
     signal stage_counter : integer;
     signal control_word_index_signal : std_logic_vector(3 downto 0);
     signal control_word_signal : std_logic_vector(0 to 9);
+    signal running_signal : STD_LOGIC := '0';
 
     type ADDRESS_ROM_TYPE is array(0 to 15) of std_logic_vector(3 downto 0);
     type CONTROL_ROM_TYPE is array(0 to 15) of STD_LOGIC_VECTOR(0 to 9);
@@ -117,8 +121,26 @@ architecture Behavioral of proc_controller is
 
 begin
 
-    HLTBAR <= '0' when opcode = "1111" else
-              '1';
+    running <= running_signal;
+
+    halt_run:
+        process(opcode)
+        begin
+            if opcode = "1111" then
+                Report "Halting Run";
+                HLTBAR <= '0';
+                running_signal <= '0';
+            end if;
+        end process;
+
+    start_run:
+        process(run_mode, run_toggle)
+        begin
+            if run_mode = '1' and running_signal = '0' and rising_edge(run_toggle) then
+                running_signal <= '1';
+                Report "Starting Program Execution";
+            end if;
+        end process;
 
     normal_run_mode:
         process(clk, rst, run_mode)
@@ -126,7 +148,7 @@ begin
             variable control_word_index : std_logic_vector(3 downto 0);
             variable control_word : std_logic_vector(0 to 9);
         begin
-            if run_mode = '1' and rst = '0' and rising_edge(clk) then
+            if run_mode = '1' and rst = '0' and running_signal = '1' and rising_edge(clk) then
                 if stage = 1 then
                     control_word_index := "0000";
                 elsif stage = 4 then

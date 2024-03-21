@@ -8,7 +8,9 @@ entity proc_top is
     port( clk_in : in STD_LOGIC;  -- map to FPGA clock will be stepped down to 1HZ
                                 -- for simulation TB should generate clk of 1HZ
           rst : in STD_LOGIC;   -- map to a button
-          run_mode : in STD_LOGIC;
+          run_mode : in STD_LOGIC;  -- 0 - manual, 1 - automatic/run
+          run_toggle : in STD_LOGIC; -- run toggles on rising edge
+          running : out STD_LOGIC;
           pulse : in STD_LOGIC;
           hltbar : in STD_LOGIC;
         -- other switches and buttons  
@@ -131,6 +133,7 @@ begin
             clk => not clk_1hz_signal,
             rst => rst,
             run_mode => run_mode,
+            run_toggle => run_toggle,
             opcode => IR_opcode_signal,
 --            control_word => control_word_signal,
             wbus_sel => wbus_sel_signal,
@@ -141,7 +144,8 @@ begin
             Su => Su_signal,
             LBBar => LBBar_signal,
             LOBar => LOBar_signal,
-            hltbar => hltbar_signal
+            hltbar => hltbar_signal,
+            running => running
         );
 
     -- control_rom : entity work.controller_rom

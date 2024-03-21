@@ -57,7 +57,7 @@ begin
     process(clk, rst)
         variable internal_value : STD_LOGIC_VECTOR(3 downto 0) := "0000";
     begin
-        if rst = '1' then
+        if rst = '1' or rising_edge(rst) then
             internal_value := (others => '0');
         elsif rising_edge(clk) and Cp = '1' then
             internal_value := STD_LOGIC_VECTOR(unsigned(internal_value) + 1);
