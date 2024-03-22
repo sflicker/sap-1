@@ -12,7 +12,7 @@ entity proc_top is
           run_toggle : in STD_LOGIC; -- run toggles on rising edge
           running : out STD_LOGIC;
           pulse : in STD_LOGIC;
-          hltbar : in STD_LOGIC;
+          hltbar_external : in STD_LOGIC;
         -- other switches and buttons  
           s7_anodes_out : out STD_LOGIC_VECTOR(3 downto 0);      -- maps to seven segment display
           s7_cathodes_out : out STD_LOGIC_VECTOR(6 downto 0)     -- maps to seven segment display
@@ -23,7 +23,8 @@ architecture behavior of proc_top is
     signal clk_1HZ_signal : std_logic;
     signal clk_1HZ_bar_signal : std_logic;
     signal clk_1KHZ_signal : std_logic;
-    signal hltbar_signal : std_logic;
+    signal hltbar_combined_signal : std_logic := '1';
+    signal hltbar_internal_signal : std_logic := '1';
 --    signal opcode_signal : std_logic_vector(3 downto 0);
     signal control_word_signal : std_logic_vector(3 downto 0);
     signal wbus_sel_signal : STD_LOGIC_VECTOR(2 downto 0);       
@@ -47,6 +48,8 @@ architecture behavior of proc_top is
     signal display_data : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
 begin
 
+    hltbar_combined_signal <= hltbar_internal_signal and hltbar_external;
+
     CLOCK_CTRL : entity work.clock_controller 
         generic map(
             SIMULATION_MODE => SIMULATION_MODE
@@ -56,7 +59,7 @@ begin
             rst => rst,
             run_mode => run_mode,
             pulse => pulse,
-            hltbar => hltbar_signal,
+            hltbar => hltbar_combined_signal,
             clk_out_1HZ => clk_1HZ_signal,
             clk_out_1HZ_bar => clk_1HZ_bar_signal,
             clk_out_1KHZ => clk_1KHZ_signal
@@ -144,7 +147,7 @@ begin
             Su => Su_signal,
             LBBar => LBBar_signal,
             LOBar => LOBar_signal,
-            hltbar => hltbar_signal,
+            hltbar => hltbar_internal_signal,
             running => running
         );
 

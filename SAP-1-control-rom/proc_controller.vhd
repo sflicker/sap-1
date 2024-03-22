@@ -123,32 +123,23 @@ begin
 
     running <= running_signal;
 
-    halt_run:
-        process(opcode)
-        begin
-            if opcode = "1111" then
-                Report "Halting Run";
-                HLTBAR <= '0';
-                running_signal <= '0';
-            end if;
-        end process;
-
-    start_run:
-        process(run_mode, run_toggle)
-        begin
-            if run_mode = '1' and running_signal = '0' and rising_edge(run_toggle) then
-                running_signal <= '1';
-                Report "Starting Program Execution";
-            end if;
-        end process;
-
-    normal_run_mode:
-        process(clk, rst, run_mode)
+    run_mode_process:
+        process(clk, rst, run_mode, opcode)
             variable stage : integer := 1;
             variable control_word_index : std_logic_vector(3 downto 0);
             variable control_word : std_logic_vector(0 to 9);
         begin
-            if run_mode = '1' and rst = '0' and running_signal = '1' and rising_edge(clk) then
+            if rising_edge(rst) then
+                Report "Handling Reset Logic - Setting hltbar high";
+                hltbar <= '1';
+            elsif opcode = "1111" then
+                Report "Halting Run - Setting HLTBAR low";
+                HLTBAR <= '0';
+                running_signal <= '0';
+            elsif run_mode = '1' and running_signal = '0' and rising_edge(run_toggle) then
+                running_signal <= '1';
+                Report "Starting Program Execution";               
+            elsif run_mode = '1' and rst = '0' and running_signal = '1' and rising_edge(clk) then
                 if stage = 1 then
                     control_word_index := "0000";
                 elsif stage = 4 then

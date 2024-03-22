@@ -61,7 +61,7 @@ begin
             run_toggle => run_toggle,
             pulse => pulse,
             rst => rst,
-            hltbar => hltbar_signal,
+            hltbar_external => hltbar_signal,
             s7_anodes_out => s7_anodes_out,
             s7_cathodes_out => s7_cathodes_out
         );
