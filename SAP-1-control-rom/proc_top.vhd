@@ -5,7 +5,7 @@ entity proc_top is
     generic (
         SIMULATION_MODE : boolean := true
     );
-    port( clk_in : in STD_LOGIC;  -- map to FPGA clock will be stepped down to 1HZ
+    port( clk_ext : in STD_LOGIC;  -- map to FPGA clock will be stepped down to 1HZ
                                 -- for simulation TB should generate clk of 1HZ
           A0 : STD_LOGIC;       -- address A0 setting - S1 in ref
           A1 : STD_LOGIC;       -- address A1 setting
@@ -37,51 +37,52 @@ entity proc_top is
 end proc_top;
 
 architecture behavior of proc_top is
-    signal clk_1HZ_signal : std_logic;
-    signal clk_1HZ_bar_signal : std_logic;
-    signal clk_1KHZ_signal : std_logic;
-    signal hltbar_combined_signal : std_logic := '1';
-    signal hltbar_internal_signal : std_logic := '1';
+    signal clk_ext_converted_sig : STD_LOGIC;
+    signal clk_sys_sig : std_logic;
+    signal clkbar_sys_sig : std_logic;
+    signal clk_disp_refresh_1KHZ_sig : std_logic;
+    signal hltbar_sig : std_logic := '1';
+    signal step_sig : std_logic;
+    signal auto_sig : std_logic;
 --    signal opcode_signal : std_logic_vector(3 downto 0);
-    signal control_word_signal : std_logic_vector(3 downto 0);
-    signal wbus_sel_signal : STD_LOGIC_VECTOR(2 downto 0);       
-    signal Cp_signal : STD_LOGIC;
-    signal LMBar_signal : STD_LOGIC;
-    signal LIBAR_signal : STD_LOGIC;
-    signal LABAR_signal : std_logic;
-    signal Su_signal : std_logic;
-    signal LBBar_signal : std_logic;
-    signal LOBar_signal : std_logic;
-    signal pc_data_signal : STD_LOGIC_VECTOR(3 downto 0);
-    signal acc_data_signal : STD_LOGIC_VECTOR(7 downto 0);
-    signal alu_data_signal : STD_LOGIC_VECTOR(7 downto 0);
-    signal IR_operand_signal : STD_LOGIC_VECTOR(3 downto 0);
-    signal IR_opcode_signal : STD_LOGIC_VECTOR(3 downto 0);
-    signal RAM_data_out_signal : STD_LOGIC_VECTOR(7 downto 0);
-    signal w_bus_data_signal : STD_LOGIC_VECTOR(7 downto 0);
-    signal mar_addr_signal: STD_LOGIC_VECTOR(3 downto 0);
-    signal ram_data_in_signal : STD_LOGIC_VECTOR(7 downto 0);
-    signal b_data_signal : STD_LOGIC_VECTOR(7 downto 0);
+    signal control_word_sig : std_logic_vector(3 downto 0);
+    signal wbus_sel_sig : STD_LOGIC_VECTOR(2 downto 0);       
+    signal Cp_sig : STD_LOGIC;
+    signal LMBar_sig : STD_LOGIC;
+    signal LIBAR_sig : STD_LOGIC;
+    signal LABAR_sig : std_logic;
+    signal Su_sig : std_logic;
+    signal LBBar_sig : std_logic;
+    signal LOBar_sig : std_logic;
+    signal pc_data_sig : STD_LOGIC_VECTOR(3 downto 0);
+    signal acc_data_sig : STD_LOGIC_VECTOR(7 downto 0);
+    signal alu_data_sig : STD_LOGIC_VECTOR(7 downto 0);
+    signal IR_operand_sig : STD_LOGIC_VECTOR(3 downto 0);
+    signal IR_opcode_sig : STD_LOGIC_VECTOR(3 downto 0);
+    signal RAM_data_out_sig : STD_LOGIC_VECTOR(7 downto 0);
+    signal w_bus_data_sig : STD_LOGIC_VECTOR(7 downto 0);
+    signal mar_addr_sig: STD_LOGIC_VECTOR(3 downto 0);
+    signal ram_data_in_sig : STD_LOGIC_VECTOR(7 downto 0);
+    signal b_data_sig : STD_LOGIC_VECTOR(7 downto 0);
     signal display_data : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
 begin
 
-    hltbar_combined_signal <= hltbar_internal_signal and hltbar_external;
 
     GENERATING_CLOCK_CONVERTER:
         if SIMULATION_MODE
         generate
             passthrough_clock_converter : entity work.passthrough_clock_converter
             port map (
-                clk_in => clk_in,   -- simulation test bench should generate a 1HZ clock
-                clk_out => clk_out_raw_1HZ
+                clk_in => clk_ext,   -- simulation test bench should generate a 1HZ clock
+                clk_out => clk_ext_converted_sig
             );
         else generate
             FPGA_clock_converter : entity work.clock_converter
             port map (
-                clk_in_100MHZ => clk_in,
-                rst => rst,
-                clk_out_1HZ => clk_out_raw_1HZ,
-                clk_out_1KHZ => clk_out_1KHZ
+                clk_in_100MHZ => clk_ext,
+  --              rst => rst,
+                clk_out_1HZ => clk_sys_sig,
+                clk_out_1KHZ => clk_disp_refresh_1KHZ_sig
             );
         end generate;
 
@@ -90,16 +91,19 @@ begin
             SIMULATION_MODE => SIMULATION_MODE
         )
         port map (
-            clk_in => clk_out_raw_1HZ,
-            rst => rst,
-            run_mode => run_mode,
-            pulse => pulse,
-            hltbar => hltbar_combined_signal,
-            clk_out 
-            clk_bar_bar
+            clk_in => clk_ext_converted_sig,
+            step => step_sig,
+            auto => auto_sig,
+--            rst => rst,
+--            run_mode => run_mode,
+--            pulse => pulse,
+            hltbar => hltbar_sig,
+            clrbar => clrbar_sig,
+            clk_out => clk_sys_sig,
+            clkbar_out => clkbar_sys_sig
             -- clk_out_1HZ => clk_1HZ_signal,
             -- clk_out_1HZ_bar => clk_1HZ_bar_signal,
-            -- clk_out_1KHZ => clk_1KHZ_signal
+            --clk_out_1KHZ => clk_1KHZ_signal
         );
     -- GENERATING_CLOCK_PROCESSOR:
     --     if SIMULATION_MODE
@@ -130,69 +134,69 @@ begin
 
     w_bus : entity work.w_bus
         port map(
-            sel => wbus_sel_signal,
-            pc_data_in => pc_data_signal,
-            acc_data_in => acc_data_signal,
-            alu_data_in => alu_data_signal,
-            IR_data_in => IR_operand_signal,
-            RAM_data_in => ram_data_out_signal,
-            data_out => w_bus_data_signal
+            sel => wbus_sel_sig,
+            pc_data_in => pc_data_sig,
+            acc_data_in => acc_data_sig,
+            alu_data_in => alu_data_sig,
+            IR_data_in => IR_operand_sig,
+            RAM_data_in => ram_data_out_sig,
+            data_out => w_bus_data_sig
         );
 
     PC : entity work.PC
         port map(
-            clk => clk_1HZ_signal,
-            rst => rst,
+            clkbar => clkbar_sys_sig,
+            clrbar => clrbar_sig,
             Cp => Cp_signal,
-            pc_out => pc_data_signal
+            pc_out => pc_data_sig
             );
 
     MAR : entity work.MAR
         port map(
-            clk => clk_1HZ_signal,
-            clr => rst,
-            LMBar => LMBar_signal,
-            mar_in => w_bus_data_signal(3 downto 0),
-            mar_out => mar_addr_signal
+            clk => clk_sys_sig,
+            clr => clr_sig,
+            LMBar => LMBar_sig,
+            mar_in => w_bus_data_sig(3 downto 0),
+            mar_out => mar_addr_sig
             );
             
     IR : entity work.IR
         port map(
-            clk => clk_1HZ_signal,
-            LIBar => LIBar_signal,
-            ir_in => w_bus_data_signal,
-            opcode_out=> IR_opcode_signal,
-            operand_out => IR_operand_signal
+            clk => clk_sys_sig,
+            LIBar => LIBar_sig,
+            ir_in => w_bus_data_sig,
+            opcode_out=> IR_opcode_sig,
+            operand_out => IR_operand_sig
         
         );
 
     ram_bank : entity work.ram_bank
         port map(
-            clk => clk_1HZ_signal,
-            addr => mar_addr_signal,
-            ram_data_in => ram_data_in_signal,
-            LBar => LBBar_signal,
-            ram_data_out => ram_data_out_signal
+            clk => clk_sys_sig,
+            addr => mar_addr_sig,
+            ram_data_in => ram_data_in_sig,
+            LBar => LBBar_sig,
+            ram_data_out => ram_data_out_sig
         );
 
     proc_controller : entity work.proc_controller
         port map(
-            clk => not clk_1hz_signal,
-            clrbar => ,
+            clk => clkbar_sys_sig,
+            clrbar => clkbar_sig,
 --            run_mode => run_mode,
 --            run_toggle => run_toggle,
-            opcode => IR_opcode_signal,
+            opcode => IR_opcode_sig,
 --            control_word => control_word_signal,
-            wbus_sel => wbus_sel_signal,
-            Cp => Cp_signal,
-            LMBar => LMBar_signal,
-            LIBar => LIBar_signal,
-            LABar => LABar_signal,
-            Su => Su_signal,
-            LBBar => LBBar_signal,
-            LOBar => LOBar_signal,
-            hltbar => hltbar_internal_signal,
-            running => running
+            wbus_sel => wbus_sel_sig,
+            Cp => Cp_sig,
+            LMBar => LMBar_sig,
+            LIBar => LIBar_sig,
+            LABar => LABar_sig,
+            Su => Su_sig,
+            LBBar => LBBar_sig,
+            LOBar => LOBar_sig,
+            hltbar => hltbar_sig
+           -- running => running
         );
 
     -- control_rom : entity work.controller_rom
@@ -211,33 +215,33 @@ begin
         
       acc: entity work.accumulator
         Port map(
-            clk => clk_1HZ_signal,
-            LABar => LABar_signal,
-            acc_in => w_bus_data_signal,
-            acc_out => acc_data_signal
+            clk => clk_sys_sig,
+            LABar => LABar_sig,
+            acc_in => w_bus_data_sig,
+            acc_out => acc_data_sig
             ); 
         
       B : entity work.B
         port map (
-            clk => clk_1HZ_signal,
-            LBBar => LBBar_signal,
-            b_in => w_bus_data_signal,
-            b_out => b_data_signal
+            clk => clk_sys_sig,
+            LBBar => LBBar_sig,
+            b_in => w_bus_data_sig,
+            b_out => b_data_sig
         );
         
       ALU : entity work.ALU
         port map (
-            Su => Su_signal,
-            a => acc_data_signal,
-            b => b_data_signal,
-            alu_out => alu_data_signal
+            Su => Su_sig,
+            a => acc_data_sig,
+            b => b_data_sig,
+            alu_out => alu_data_sig
             );
 
     OUTPUT_REG : entity work.output
             port map (
-                clk => clk_1HZ_signal,
-                LOBar => LOBar_signal,
-                output_in => w_bus_data_signal,
+                clk => clk_sys_sig,
+                LOBar => LOBar_sig,
+                output_in => w_bus_data_sig,
                 output_out => display_data(7 downto 0)
             );
         
@@ -245,7 +249,7 @@ begin
         generate  
             display_controller : entity work.display_controller
             port map(
-                clk => clk_1KHZ_signal,
+                clk => clk_disp_refresh_1KHZ_sig,
                 rst => rst,
                 data_in => display_data,
                 anodes_out => s7_anodes_out,

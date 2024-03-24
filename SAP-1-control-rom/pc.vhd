@@ -34,8 +34,8 @@ use IEEE.numeric_std.ALL;
 
 entity pc is
     Port ( 
-        clk : in STD_LOGIC;
-        rst : in STD_LOGIC;
+        clkbar : in STD_LOGIC;
+        clrbar : in STD_LOGIC;
         Cp : in STD_LOGIC;
         pc_out : out STD_LOGIC_VECTOR(3 downto 0)
         );
@@ -54,12 +54,12 @@ begin
 
     -- end process;
     
-    process(clk, rst)
+    process(clkbar, clrbar)
         variable internal_value : STD_LOGIC_VECTOR(3 downto 0) := "0000";
     begin
-        if rst = '1' or rising_edge(rst) then
+        if clrbar = '0' then
             internal_value := (others => '0');
-        elsif rising_edge(clk) and Cp = '1' then
+        elsif falling_edge(clkbar) and Cp = '1' then
             internal_value := STD_LOGIC_VECTOR(unsigned(internal_value) + 1);
         end if;
         pc_out <= internal_value;

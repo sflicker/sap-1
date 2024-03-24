@@ -49,7 +49,7 @@ signal clk : STD_LOGIC;
 signal run_mode : STD_LOGIC;
 signal run_toggle : STD_LOGIC;
 signal pulse : STD_LOGIC;
-signal hltbar_signal : STD_LOGIC;
+signal hltbar_sig : STD_LOGIC;
 begin
     proc_top : entity work.proc_top
         generic map (
@@ -78,14 +78,14 @@ begin
 
         if Test_Name = "PowerOn" then
             Report "Starting SAP-1 PowerOn Test";
-            hltbar_signal <= '1';
+            hltbar_sig <= '1';
             rst <= '0';
             run_mode <= '0';
             wait for 200 ns;
         elsif Test_Name = "Execute" then
 
             Report "Starting SAP-1 Execute Test";
-            hltbar_signal <= '1';
+            hltbar_sig <= '1';
             rst <= '0';
             run_mode <= '0';
             run_toggle <= '0';

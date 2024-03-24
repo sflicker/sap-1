@@ -53,23 +53,27 @@ use IEEE.numeric_std.all;
 
 entity proc_controller is
   Port (
+    -- inputs
     clk : in STD_LOGIC;
-    rst : in STD_LOGIC;
-    run_mode : in STD_LOGIC;
-    run_toggle : in STD_LOGIC;
+    clrbar : in STD_LOGIC;
+--    rst : in STD_LOGIC;
+--    run_mode : in STD_LOGIC;
+--    run_toggle : in STD_LOGIC;
     opcode : in STD_LOGIC_VECTOR(3 downto 0);          -- 5 opcodes in model, 4 bits of instruction form the opcode
+  
+    -- outputs
     --control_word : out STD_LOGIC_VECTOR(3 downto 0)    -- 4 bits control word
     wbus_sel : out STD_LOGIC_VECTOR(2 downto 0);
     Cp  : out STD_LOGIC;                          -- increment program counter by one
-    ClrPC : out STD_LOGIC;
+   -- ClrPC : out STD_LOGIC;
     LMBar : out STD_LOGIC;                        -- Load MAR register from WBus - enable low
     LIBar : out STD_LOGIC;                        -- LOAD IR register from WBus - enable low
     LABar : out STD_LOGIC;                        -- LOAD Accumulator register from WBus -- enable low
     Su : out STD_LOGIC;                           -- operation for ALU. 0 - ADD, 1 - Subtract
     LBBar : out STD_LOGIC;                        -- LOAD B register from WBus - eanble low
     LOBar : out STD_LOGIC;
-    HLTBar : out STD_LOGIC;
-    running : out STD_LOGIC
+    HLTBar : out STD_LOGIC
+    --running : out STD_LOGIC
     );
 end proc_controller;
 
@@ -120,62 +124,61 @@ architecture Behavioral of proc_controller is
        );
 
 begin
+    HLTBAR <= '0' when opcode = "1111" else
+        '1';
 
-    running <= running_signal;
+--    running <= running_signal;
 
     run_mode_process:
-        process(clk, rst, run_mode, opcode)
+        process(clk, clrbar, opcode)
             variable stage : integer := 1;
             variable control_word_index : std_logic_vector(3 downto 0);
             variable control_word : std_logic_vector(0 to 9);
         begin
-            if rst = '1' then
-                Report "Handling Reset Logic - Setting hltbar high";
-                hltbar <= '1';
-            else
-                if opcode = "1111" then
-                    Report "Halting Run - Setting HLTBAR low";
-                    HLTBAR <= '0';
-                    running_signal <= '0';
-                elsif run_mode = '1' and running_signal = '0' and rising_edge(run_toggle) then
-                    running_signal <= '1';
-                    Report "Starting Program Execution";               
-                elsif run_mode = '1' and running_signal = '1' and rising_edge(clk) then
-                    if stage = 1 then
-                        control_word_index := "0000";
-                    elsif stage = 4 then
-                        control_word_index := ADDRESS_ROM_CONTENTS(to_integer(unsigned(opcode)));
-                    else 
-                        control_word_index := std_logic_vector(unsigned(control_word_index) + 1);
-                    end if;
-    
-                    control_word := CONTROL_ROM(to_integer(unsigned(control_word_index)));
-    
-                    Report "Stage: " & to_string(stage) 
-                        & ", control_word_index: " & to_string(control_word_index) 
-                        & ", control_word: " & to_string(control_word) & ", opcode: " & to_string(opcode);
-    
-                    control_word_signal <= control_word;
-                    control_word_index_signal <= control_word_index;
-                    wbus_sel <= control_word(0 to 2);
-                    Cp <= control_word(3);
-                    LMBar <= control_word(4);
-                    LIBar <= control_word(5);
-                    LABar <= control_word(6);
-                    Su <= control_word(7);
-                    LBBar <= control_word(8);
-                    LOBar <= control_word(9);
-    
-                    stage_counter <= stage;
-        
-    
-                    if stage >= 6 then
-                        stage := 1;
-                    else 
-                        stage := stage + 1;
-                    end if;
-    
+
+    --         if opcode = "1111" then
+    --             Report "Halting Run - Setting HLTBAR low";
+    --             HLTBAR <= '0';
+    -- --            running_signal <= '0';
+            if CLRBAR = '0' then
+                stage := 1;
+            -- elsif run_mode = '1' and running_signal = '0' and rising_edge(run_toggle) then
+            --     running_signal <= '1';
+            --     Report "Starting Program Execution";               
+            elsif rising_edge(clk) then
+                if stage = 1 then
+                    control_word_index := "0000";
+                elsif stage = 4 then
+                    control_word_index := ADDRESS_ROM_CONTENTS(to_integer(unsigned(opcode)));
+                else 
+                    control_word_index := std_logic_vector(unsigned(control_word_index) + 1);
                 end if;
+
+                control_word := CONTROL_ROM(to_integer(unsigned(control_word_index)));
+
+                Report "Stage: " & to_string(stage) 
+                    & ", control_word_index: " & to_string(control_word_index) 
+                    & ", control_word: " & to_string(control_word) & ", opcode: " & to_string(opcode);
+
+                control_word_signal <= control_word;
+                control_word_index_signal <= control_word_index;
+                wbus_sel <= control_word(0 to 2);
+                Cp <= control_word(3);
+                LMBar <= control_word(4);
+                LIBar <= control_word(5);
+                LABar <= control_word(6);
+                Su <= control_word(7);
+                LBBar <= control_word(8);
+                LOBar <= control_word(9);
+
+                stage_counter <= stage;
+    
+                if stage >= 6 then
+                    stage := 1;
+                else 
+                    stage := stage + 1;
+                end if;
+
             end if;
         end process;
 

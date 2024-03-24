@@ -33,6 +33,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity IR is
     Port ( clk : in STD_LOGIC;
+           clr : in STD_LOGIC;
            ir_in : in STD_LOGIC_VECTOR(7 downto 0);
            LIBar : in STD_LOGIC;
            opcode_out : out STD_LOGIC_VECTOR(3 downto 0);
@@ -45,7 +46,9 @@ architecture Behavioral of IR is
 begin
     process(clk)
     begin
-        if rising_edge(clk) and LIBar = '0' then
+        if clr = '1' then
+            opcode_out <= "0000";
+        elsif rising_edge(clk) and LIBar = '0' then
             internal_data <= ir_in;
         end if;
     end process;
