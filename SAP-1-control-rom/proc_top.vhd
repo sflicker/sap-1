@@ -3,16 +3,33 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity proc_top is
     generic (
-        SIMULATION_MODE : boolean := false
+        SIMULATION_MODE : boolean := true
     );
     port( clk_in : in STD_LOGIC;  -- map to FPGA clock will be stepped down to 1HZ
                                 -- for simulation TB should generate clk of 1HZ
-          rst : in STD_LOGIC;   -- map to a button
-          run_mode : in STD_LOGIC;  -- 0 - manual, 1 - automatic/run
-          run_toggle : in STD_LOGIC; -- run toggles on rising edge
+          A0 : STD_LOGIC;       -- address A0 setting - S1 in ref
+          A1 : STD_LOGIC;       -- address A1 setting
+          A2 : STD_LOGIC;       -- address A2 setting
+          A3 : STD_LOGIC;       -- address A3 setting
+          S2 : STD_LOGIC;       -- prog / run switch
+          D0 : STD_LOGIC;       -- data D0 setting      S3 in ref
+          D1 : STD_LOGIC;       -- data D1 setting
+          D2 : STD_LOGIC;       -- data D2 setting
+          D3 : STD_LOGIC;       -- data D3 setting
+          D4 : STD_LOGIC;       -- data D4 setting
+          D5 : STD_LOGIC;       -- data D5 setting
+          D6 : STD_LOGIC;       -- data D6 setting
+          D7 : STD_LOGIC;       -- data D7 setting
+          S4 : STD_LOGIC;       -- read/write toggle   -- 1 to write values to ram. 0 to read. needs to be 0 for run mode
+          S5 : STD_LOGIC;       -- start/clear (reset)  -- 
+          S6 : STD_LOGIC;       -- single step -- 1 for a single step
+          S7 : STD_LOGIC;       -- manual/auto mode - 0 for manual, 1 for auto. 
+       --   rst : in STD_LOGIC;   -- map to a button
+       --   run_mode : in STD_LOGIC;  -- 0 - manual, 1 - automatic/run
+       ---   run_toggle : in STD_LOGIC; -- run toggles on rising edge
           running : out STD_LOGIC;
-          pulse : in STD_LOGIC;
-          hltbar_external : in STD_LOGIC;
+       --   pulse : in STD_LOGIC;
+       --   hltbar_external : in STD_LOGIC;
         -- other switches and buttons  
           s7_anodes_out : out STD_LOGIC_VECTOR(3 downto 0);      -- maps to seven segment display
           s7_cathodes_out : out STD_LOGIC_VECTOR(6 downto 0)     -- maps to seven segment display
@@ -50,19 +67,39 @@ begin
 
     hltbar_combined_signal <= hltbar_internal_signal and hltbar_external;
 
+    GENERATING_CLOCK_CONVERTER:
+        if SIMULATION_MODE
+        generate
+            passthrough_clock_converter : entity work.passthrough_clock_converter
+            port map (
+                clk_in => clk_in,   -- simulation test bench should generate a 1HZ clock
+                clk_out => clk_out_raw_1HZ
+            );
+        else generate
+            FPGA_clock_converter : entity work.clock_converter
+            port map (
+                clk_in_100MHZ => clk_in,
+                rst => rst,
+                clk_out_1HZ => clk_out_raw_1HZ,
+                clk_out_1KHZ => clk_out_1KHZ
+            );
+        end generate;
+
     CLOCK_CTRL : entity work.clock_controller 
         generic map(
             SIMULATION_MODE => SIMULATION_MODE
         )
         port map (
-            clk_in => clk_in,
+            clk_in => clk_out_raw_1HZ,
             rst => rst,
             run_mode => run_mode,
             pulse => pulse,
             hltbar => hltbar_combined_signal,
-            clk_out_1HZ => clk_1HZ_signal,
-            clk_out_1HZ_bar => clk_1HZ_bar_signal,
-            clk_out_1KHZ => clk_1KHZ_signal
+            clk_out 
+            clk_bar_bar
+            -- clk_out_1HZ => clk_1HZ_signal,
+            -- clk_out_1HZ_bar => clk_1HZ_bar_signal,
+            -- clk_out_1KHZ => clk_1KHZ_signal
         );
     -- GENERATING_CLOCK_PROCESSOR:
     --     if SIMULATION_MODE
@@ -83,6 +120,13 @@ begin
         
     --     end generate;
     
+    single_pulse_generator : entity work.single_pulse_generator
+        port map(
+            clk => clk_out_1HZ,
+            start => pulse,
+            pulse_out => clock_pulse
+        );
+
 
     w_bus : entity work.w_bus
         port map(
@@ -134,9 +178,9 @@ begin
     proc_controller : entity work.proc_controller
         port map(
             clk => not clk_1hz_signal,
-            rst => rst,
-            run_mode => run_mode,
-            run_toggle => run_toggle,
+            clrbar => ,
+--            run_mode => run_mode,
+--            run_toggle => run_toggle,
             opcode => IR_opcode_signal,
 --            control_word => control_word_signal,
             wbus_sel => wbus_sel_signal,

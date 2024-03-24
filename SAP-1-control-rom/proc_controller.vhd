@@ -129,53 +129,54 @@ begin
             variable control_word_index : std_logic_vector(3 downto 0);
             variable control_word : std_logic_vector(0 to 9);
         begin
-            if rising_edge(rst) then
+            if rst = '1' then
                 Report "Handling Reset Logic - Setting hltbar high";
                 hltbar <= '1';
-            elsif opcode = "1111" then
-                Report "Halting Run - Setting HLTBAR low";
-                HLTBAR <= '0';
-                running_signal <= '0';
-            elsif run_mode = '1' and running_signal = '0' and rising_edge(run_toggle) then
-                running_signal <= '1';
-                Report "Starting Program Execution";               
-            elsif run_mode = '1' and rst = '0' and running_signal = '1' and rising_edge(clk) then
-                if stage = 1 then
-                    control_word_index := "0000";
-                elsif stage = 4 then
-                    control_word_index := ADDRESS_ROM_CONTENTS(to_integer(unsigned(opcode)));
-                else 
-                    control_word_index := std_logic_vector(unsigned(control_word_index) + 1);
-                end if;
-
-                control_word := CONTROL_ROM(to_integer(unsigned(control_word_index)));
-
-                Report "Stage: " & to_string(stage) 
-                    & ", control_word_index: " & to_string(control_word_index) 
-                    & ", control_word: " & to_string(control_word) & ", opcode: " & to_string(opcode);
-
-                control_word_signal <= control_word;
-                control_word_index_signal <= control_word_index;
-                wbus_sel <= control_word(0 to 2);
-                Cp <= control_word(3);
-                LMBar <= control_word(4);
-                LIBar <= control_word(5);
-                LABar <= control_word(6);
-                Su <= control_word(7);
-                LBBar <= control_word(8);
-                LOBar <= control_word(9);
-
-                stage_counter <= stage;
+            else
+                if opcode = "1111" then
+                    Report "Halting Run - Setting HLTBAR low";
+                    HLTBAR <= '0';
+                    running_signal <= '0';
+                elsif run_mode = '1' and running_signal = '0' and rising_edge(run_toggle) then
+                    running_signal <= '1';
+                    Report "Starting Program Execution";               
+                elsif run_mode = '1' and running_signal = '1' and rising_edge(clk) then
+                    if stage = 1 then
+                        control_word_index := "0000";
+                    elsif stage = 4 then
+                        control_word_index := ADDRESS_ROM_CONTENTS(to_integer(unsigned(opcode)));
+                    else 
+                        control_word_index := std_logic_vector(unsigned(control_word_index) + 1);
+                    end if;
     
-
-                if stage >= 6 then
-                    stage := 1;
-                else 
-                    stage := stage + 1;
+                    control_word := CONTROL_ROM(to_integer(unsigned(control_word_index)));
+    
+                    Report "Stage: " & to_string(stage) 
+                        & ", control_word_index: " & to_string(control_word_index) 
+                        & ", control_word: " & to_string(control_word) & ", opcode: " & to_string(opcode);
+    
+                    control_word_signal <= control_word;
+                    control_word_index_signal <= control_word_index;
+                    wbus_sel <= control_word(0 to 2);
+                    Cp <= control_word(3);
+                    LMBar <= control_word(4);
+                    LIBar <= control_word(5);
+                    LABar <= control_word(6);
+                    Su <= control_word(7);
+                    LBBar <= control_word(8);
+                    LOBar <= control_word(9);
+    
+                    stage_counter <= stage;
+        
+    
+                    if stage >= 6 then
+                        stage := 1;
+                    else 
+                        stage := stage + 1;
+                    end if;
+    
                 end if;
-
             end if;
-
         end process;
 
 --    stage_counter_inst : entity work.ring_counter_6bit
