@@ -7,19 +7,9 @@ entity proc_top is
     );
     port( clk_ext : in STD_LOGIC;  -- map to FPGA clock will be stepped down to 1HZ
                                 -- for simulation TB should generate clk of 1HZ
-          A0 : STD_LOGIC;       -- address A0 setting - S1 in ref
-          A1 : STD_LOGIC;       -- address A1 setting
-          A2 : STD_LOGIC;       -- address A2 setting
-          A3 : STD_LOGIC;       -- address A3 setting
+          addr_in : STD_LOGIC_VECTOR(3 downto 0);       -- address setting - S1 in ref
           S2 : STD_LOGIC;       -- prog / run switch
-          D0 : STD_LOGIC;       -- data D0 setting      S3 in ref
-          D1 : STD_LOGIC;       -- data D1 setting
-          D2 : STD_LOGIC;       -- data D2 setting
-          D3 : STD_LOGIC;       -- data D3 setting
-          D4 : STD_LOGIC;       -- data D4 setting
-          D5 : STD_LOGIC;       -- data D5 setting
-          D6 : STD_LOGIC;       -- data D6 setting
-          D7 : STD_LOGIC;       -- data D7 setting
+          data_in : STD_LOGIC_VECTOR(7 downto 0);       -- data setting      S3 in ref
           S4 : STD_LOGIC;       -- read/write toggle   -- 1 to write values to ram. 0 to read. needs to be 0 for run mode
           S5 : STD_LOGIC;       -- start/clear (reset)  -- 
           S6 : STD_LOGIC;       -- single step -- 1 for a single step
@@ -42,6 +32,8 @@ architecture behavior of proc_top is
     signal clkbar_sys_sig : std_logic;
     signal clk_disp_refresh_1KHZ_sig : std_logic;
     signal hltbar_sig : std_logic := '1';
+    signal clrbar_sig : STD_LOGIC;
+    signal clr_sig : STD_LOGIC;
     signal step_sig : std_logic;
     signal auto_sig : std_logic;
 --    signal opcode_signal : std_logic_vector(3 downto 0);
@@ -124,12 +116,12 @@ begin
         
     --     end generate;
     
-    single_pulse_generator : entity work.single_pulse_generator
-        port map(
-            clk => clk_out_1HZ,
-            start => pulse,
-            pulse_out => clock_pulse
-        );
+    -- single_pulse_generator : entity work.single_pulse_generator
+    --     port map(
+    --         clk => clk_out_1HZ,
+    --         start => pulse,
+    --         pulse_out => clock_pulse
+    --     );
 
 
     w_bus : entity work.w_bus
@@ -147,7 +139,7 @@ begin
         port map(
             clkbar => clkbar_sys_sig,
             clrbar => clrbar_sig,
-            Cp => Cp_signal,
+            Cp => Cp_sig,
             pc_out => pc_data_sig
             );
 
@@ -163,6 +155,7 @@ begin
     IR : entity work.IR
         port map(
             clk => clk_sys_sig,
+            clr => clr_sig,
             LIBar => LIBar_sig,
             ir_in => w_bus_data_sig,
             opcode_out=> IR_opcode_sig,
@@ -182,7 +175,7 @@ begin
     proc_controller : entity work.proc_controller
         port map(
             clk => clkbar_sys_sig,
-            clrbar => clkbar_sig,
+            clrbar => clrbar_sig,
 --            run_mode => run_mode,
 --            run_toggle => run_toggle,
             opcode => IR_opcode_sig,
@@ -245,17 +238,17 @@ begin
                 output_out => display_data(7 downto 0)
             );
         
-      GENERATING_FPGA_OUTPUT : if SIMULATION_MODE = false
-        generate  
-            display_controller : entity work.display_controller
-            port map(
-                clk => clk_disp_refresh_1KHZ_sig,
-                rst => rst,
-                data_in => display_data,
-                anodes_out => s7_anodes_out,
-                cathodes_out => s7_cathodes_out
-            );
-        end generate;
+    --   GENERATING_FPGA_OUTPUT : if SIMULATION_MODE = false
+    --     generate  
+    --         display_controller : entity work.display_controller
+    --         port map(
+    --             clk => clk_disp_refresh_1KHZ_sig,
+    --             rst => rst,
+    --             data_in => display_data,
+    --             anodes_out => s7_anodes_out,
+    --             cathodes_out => s7_cathodes_out
+    --         );
+    --     end generate;
                               
     -- log:
     --     process(clk_in)

@@ -50,18 +50,33 @@ signal run_mode : STD_LOGIC;
 signal run_toggle : STD_LOGIC;
 signal pulse : STD_LOGIC;
 signal hltbar_sig : STD_LOGIC;
+signal addr_sig : STD_LOGIC_VECTOR(3 downto 0);
+signal data_sig : STD_LOGIC_VECTOR(7 downto 0);
+signal S2_sig : STD_LOGIC;
+signal S4_sig : STD_LOGIC;
+signal S5_sig : STD_LOGIC;
+signal S6_sig : STD_LOGIC;
+signal S7_sig : STD_LOGIC;
 begin
     proc_top : entity work.proc_top
         generic map (
             SIMULATION_MODE => true
         )
         port map(
-            clk_in => clk,
-            run_mode => run_mode,
-            run_toggle => run_toggle,
-            pulse => pulse,
-            rst => rst,
-            hltbar_external => hltbar_signal,
+            clk_ext => clk,
+            addr_in => addr_sig,
+            data_in => data_sig,
+            S2 => S2_sig,
+            S4 => S4_sig,
+            S5 => S5_sig,
+            S6 => S6_sig,
+            S7 => S7_sig,
+            -- run_mode => run_mode,
+            -- run_toggle => run_toggle,
+            -- pulse => pulse,
+--            rst => rst,
+--            hltbar_external => hltbar_sig,
+            running => open,
             s7_anodes_out => s7_anodes_out,
             s7_cathodes_out => s7_cathodes_out
         );
