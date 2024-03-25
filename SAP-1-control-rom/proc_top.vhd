@@ -11,9 +11,9 @@ entity proc_top is
           S2 : STD_LOGIC;       -- prog / run switch
           data_in : STD_LOGIC_VECTOR(7 downto 0);       -- data setting      S3 in ref
           S4 : STD_LOGIC;       -- read/write toggle   -- 1 to write values to ram. 0 to read. needs to be 0 for run mode
-          S5 : STD_LOGIC;       -- start/clear (reset)  -- 
-          S6 : STD_LOGIC;       -- single step -- 1 for a single step
-          S7 : STD_LOGIC;       -- manual/auto mode - 0 for manual, 1 for auto. 
+          S5_clear_start : STD_LOGIC;       -- start/clear (reset)  -- 
+          S6_step : STD_LOGIC;       -- single step -- 1 for a single step
+          S7_auto : STD_LOGIC;       -- manual/auto mode - 0 for manual, 1 for auto. 
        --   rst : in STD_LOGIC;   -- map to a button
        --   run_mode : in STD_LOGIC;  -- 0 - manual, 1 - automatic/run
        ---   run_toggle : in STD_LOGIC; -- run toggles on rising edge
@@ -32,10 +32,11 @@ architecture behavior of proc_top is
     signal clkbar_sys_sig : std_logic;
     signal clk_disp_refresh_1KHZ_sig : std_logic;
     signal hltbar_sig : std_logic := '1';
-    signal clrbar_sig : STD_LOGIC;
     signal clr_sig : STD_LOGIC;
-    signal step_sig : std_logic;
-    signal auto_sig : std_logic;
+    signal clrbar_sig : STD_LOGIC;
+--    signal s5_clr_sig : STD_LOGIC;
+--    signal s6_step_sig : std_logic;
+--    signal s7_auto_sig : std_logic;
 --    signal opcode_signal : std_logic_vector(3 downto 0);
     signal control_word_sig : std_logic_vector(3 downto 0);
     signal wbus_sel_sig : STD_LOGIC_VECTOR(2 downto 0);       
@@ -59,6 +60,8 @@ architecture behavior of proc_top is
     signal display_data : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
 begin
 
+    clr_sig <= '1' when S5_clear_start = '1' else '0';
+    clrbar_sig <= not clr_sig;
 
     GENERATING_CLOCK_CONVERTER:
         if SIMULATION_MODE
@@ -84,8 +87,8 @@ begin
         )
         port map (
             clk_in => clk_ext_converted_sig,
-            step => step_sig,
-            auto => auto_sig,
+            step => S6_step,
+            auto => S7_auto,
 --            rst => rst,
 --            run_mode => run_mode,
 --            pulse => pulse,

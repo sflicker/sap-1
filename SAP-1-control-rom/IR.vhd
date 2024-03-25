@@ -42,18 +42,18 @@ entity IR is
 end IR;
 
 architecture Behavioral of IR is
-    signal internal_data : std_logic_vector(7 downto 0);
+    
 begin
     process(clk)
+        variable internal_data : std_logic_vector(7 downto 0);
     begin
         if clr = '1' then
             opcode_out <= "0000";
         elsif rising_edge(clk) and LIBar = '0' then
-            internal_data <= ir_in;
+            internal_data := ir_in;
+            opcode_out <= internal_data(7 downto 4);
+            operand_out <= internal_data(3 downto 0);
         end if;
     end process;
     
-    opcode_out <= internal_data(7 downto 4);
-    operand_out <= internal_data(3 downto 0);
-
 end Behavioral;
