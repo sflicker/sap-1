@@ -34,8 +34,8 @@ use IEEE.numeric_std.all;
 
 entity clock_converter is
     port(
+       clrbar : in STD_LOGIC; 
        clk_in_100MHZ : in std_logic;
---       rst : in std_logic;
        clk_out_1HZ : out std_logic;
        clk_out_1KHZ : out std_logic
        );
@@ -51,13 +51,12 @@ architecture Behavioral of clock_converter is
 begin
     process(clk_in_100MHZ)
     begin
-        -- if rst = '1' then
-        --     counter_1HZ <= (others => '0');
-        --     counter_1KHZ <= (others => '0');
-        --     clk_out_int_1HZ <= '0';
-        --     clk_out_int_1KHZ <= '0';
-        -- els
-        if rising_edge(clk_in_100MHZ) then
+         if clrbar = '0' then
+             counter_1HZ <= (others => '0');
+             counter_1KHZ <= (others => '0');
+             clk_out_int_1HZ <= '0';
+             clk_out_int_1KHZ <= '0';
+        elsif rising_edge(clk_in_100MHZ) then
             -- handle 1 HZ counter
             if counter_1HZ = 50000000-1 then
                 clk_out_int_1HZ <= not clk_out_int_1HZ;

@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity proc_top is
     generic (
-        SIMULATION_MODE : boolean := true
+        SIMULATION_MODE : boolean := false
     );
     port( clk_ext : in STD_LOGIC;  -- map to FPGA clock will be stepped down to 1HZ
                                 -- for simulation TB should generate clk of 1HZ
@@ -14,13 +14,7 @@ entity proc_top is
           S5_clear_start : STD_LOGIC;       -- start/clear (reset)  -- 
           S6_step : STD_LOGIC;       -- single step -- 1 for a single step
           S7_auto : STD_LOGIC;       -- manual/auto mode - 0 for manual, 1 for auto. 
-       --   rst : in STD_LOGIC;   -- map to a button
-       --   run_mode : in STD_LOGIC;  -- 0 - manual, 1 - automatic/run
-       ---   run_toggle : in STD_LOGIC; -- run toggles on rising edge
           running : out STD_LOGIC;
-       --   pulse : in STD_LOGIC;
-       --   hltbar_external : in STD_LOGIC;
-        -- other switches and buttons  
           s7_anodes_out : out STD_LOGIC_VECTOR(3 downto 0);      -- maps to seven segment display
           s7_cathodes_out : out STD_LOGIC_VECTOR(6 downto 0)     -- maps to seven segment display
         );
@@ -34,10 +28,6 @@ architecture behavior of proc_top is
     signal hltbar_sig : std_logic := '1';
     signal clr_sig : STD_LOGIC;
     signal clrbar_sig : STD_LOGIC;
---    signal s5_clr_sig : STD_LOGIC;
---    signal s6_step_sig : std_logic;
---    signal s7_auto_sig : std_logic;
---    signal opcode_signal : std_logic_vector(3 downto 0);
     signal control_word_sig : std_logic_vector(3 downto 0);
     signal wbus_sel_sig : STD_LOGIC_VECTOR(2 downto 0);       
     signal Cp_sig : STD_LOGIC;
@@ -63,22 +53,22 @@ begin
     clr_sig <= '1' when S5_clear_start = '1' else '0';
     clrbar_sig <= not clr_sig;
     running <= S7_auto and hltbar_sig;
-
     
     GENERATING_CLOCK_CONVERTER:
         if SIMULATION_MODE
         generate
             passthrough_clock_converter : entity work.passthrough_clock_converter
             port map (
+                clrbar => clrbar_sig,
                 clk_in => clk_ext,   -- simulation test bench should generate a 1HZ clock
                 clk_out => clk_ext_converted_sig
             );
         else generate
             FPGA_clock_converter : entity work.clock_converter
             port map (
+                clrbar => clrbar_sig,
                 clk_in_100MHZ => clk_ext,
-  --              rst => rst,
-                clk_out_1HZ => clk_sys_sig,
+                clk_out_1HZ => clk_ext_converted_sig,
                 clk_out_1KHZ => clk_disp_refresh_1KHZ_sig
             );
         end generate;
@@ -89,35 +79,12 @@ begin
             clk_in => clk_ext_converted_sig,
             step => S6_step,
             auto => S7_auto,
---            rst => rst,
---            run_mode => run_mode,
---            pulse => pulse,
             hltbar => hltbar_sig,
             clrbar => clrbar_sig,
             clk_out => clk_sys_sig,
             clkbar_out => clkbar_sys_sig
-            -- clk_out_1HZ => clk_1HZ_signal,
-            -- clk_out_1HZ_bar => clk_1HZ_bar_signal,
-            --clk_out_1KHZ => clk_1KHZ_signal
         );
-    GENERATING_CLOCK_PROCESSOR:
-        if SIMULATION_MODE
-        generate
-            passthrough_clock_converter : entity work.passthrough_clock_converter
-                port map (
-                    clk_in => clk_in,   -- simulation test bench should generate a 1HZ clock
-                    clk_out => clk_1HZ_signal
-                );
-        else generate
-            FPGA_clock_converter : entity work.clock_converter
-                port map(
-                    clk_in_100MHZ => clk_in,    -- clock from BASYS3 FPGA SYSTEM CLOCK. change if other different
-                    rst => rst, 
-                    clk_out_1HZ => clk_1HZ_signal,            -- slow clock for processor from development. may increase later
-                    clk_out_1KHZ => clk_1KHZ_signal           -- clock for seven segment display on basys3 refresh  
-                );
-        
-        end generate;
+
     
     -- single_pulse_generator : entity work.single_pulse_generator
     --     port map(
@@ -179,10 +146,7 @@ begin
         port map(
             clk => clkbar_sys_sig,
             clrbar => clrbar_sig,
---            run_mode => run_mode,
---            run_toggle => run_toggle,
             opcode => IR_opcode_sig,
---            control_word => control_word_signal,
             wbus_sel => wbus_sel_sig,
             Cp => Cp_sig,
             LMBar => LMBar_sig,
@@ -192,7 +156,6 @@ begin
             LBBar => LBBar_sig,
             LOBar => LOBar_sig,
             hltbar => hltbar_sig
-           -- running => running
         );
 
     -- control_rom : entity work.controller_rom
@@ -246,21 +209,12 @@ begin
             display_controller : entity work.display_controller
             port map(
                clk => clk_disp_refresh_1KHZ_sig,
-               rst => rst,
+               rst => clr_sig,
                data_in => display_data,
                anodes_out => s7_anodes_out,
                cathodes_out => s7_cathodes_out
            );
-       end generate;
-                              
-    -- log:
-    --     process(clk_in)
-    --     begin
-    --         if rising_edge(clk_in) then
-    --             Report "Clock";
-    --         end if;
-    --     end process;
-
+       end generate;                        
 
 end behavior;
     
