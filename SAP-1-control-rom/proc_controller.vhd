@@ -72,12 +72,9 @@ entity proc_controller is
 end proc_controller;
 
 architecture Behavioral of proc_controller is
-    signal address_rom_out : STD_LOGIC_VECTOR(3 downto 0);
-    signal clear_presettable_counter : STD_LOGIC;
     signal stage_counter : integer;
     signal control_word_index_signal : std_logic_vector(3 downto 0);
     signal control_word_signal : std_logic_vector(0 to 9);
-    signal running_signal : STD_LOGIC := '0';
 
     type ADDRESS_ROM_TYPE is array(0 to 15) of std_logic_vector(3 downto 0);
     type CONTROL_ROM_TYPE is array(0 to 15) of STD_LOGIC_VECTOR(0 to 9);
@@ -91,6 +88,8 @@ architecture Behavioral of proc_controller is
         others => "0000"
     );
 
+    constant NOP : STD_LOGIC_VECTOR(0 to 9) := "1110111011";
+
     constant CONTROL_ROM : CONTROL_ROM_TYPE := (
        -- FETCH
        0 =>  "0000011011",     -- Phase1:   PC -> MAR
@@ -99,7 +98,7 @@ architecture Behavioral of proc_controller is
        -- LDA
        3 =>  "0110011011",     -- LDA Phase4: IR (operand portion) -> MAR
        4 =>  "1000110011",     -- LDA Phase5: RAM -> A
-       5 =>  "1110111011",     -- LDA Phase6: NOP
+       5 =>  NOP,     -- LDA Phase6: NOP
        -- ADD
        6 =>  "0110011011",      -- ADD Phase4: IR(operand portion) -> MAR
        7 =>  "1000111001",      -- ADD Phase5: RAM -> B, SU -> 0
@@ -110,10 +109,10 @@ architecture Behavioral of proc_controller is
        11 => "0100110011",      -- --SUB phase6: ALU => A
        -- OUT
        12 => "0010111010",      -- OUT phase 4  A => OUT
-       13 => "1110111011",      -- OUT phase 5 NOP
-       14 => "1110111011",      -- OUT phase 5 NOP
+       13 => NOP,      -- OUT phase 5 NOP
+       14 => NOP,      -- OUT phase 5 NOP
        -- unused
-       15 => "1110111011"       --NOP
+       15 => NOP       --NOP
        
        );
 
@@ -142,29 +141,36 @@ begin
 
                 control_word := CONTROL_ROM(to_integer(unsigned(control_word_index)));
 
+
                 Report "Stage: " & to_string(stage) 
                     & ", control_word_index: " & to_string(control_word_index) 
                     & ", control_word: " & to_string(control_word) & ", opcode: " & to_string(opcode);
 
-                control_word_signal <= control_word;
-                control_word_index_signal <= control_word_index;
-                wbus_sel <= control_word(0 to 2);
-                Cp <= control_word(3);
-                LMBar <= control_word(4);
-                LIBar <= control_word(5);
-                LABar <= control_word(6);
-                Su <= control_word(7);
-                LBBar <= control_word(8);
-                LOBar <= control_word(9);
-
-                stage_counter <= stage;
-    
-                if stage >= 6 then
+                if control_word = NOP then
+                    Report "NOP detected moving to next instruction";
                     stage := 1;
-                else 
-                    stage := stage + 1;
-                end if;
+                    stage_counter <= stage;
+                else
 
+                    control_word_signal <= control_word;
+                    control_word_index_signal <= control_word_index;
+                    wbus_sel <= control_word(0 to 2);
+                    Cp <= control_word(3);
+                    LMBar <= control_word(4);
+                    LIBar <= control_word(5);
+                    LABar <= control_word(6);
+                    Su <= control_word(7);
+                    LBBar <= control_word(8);
+                    LOBar <= control_word(9);
+
+                    stage_counter <= stage;
+        
+                    if stage >= 6 then
+                        stage := 1;
+                    else 
+                        stage := stage + 1;
+                    end if;
+                end if;
             end if;
         end process;
 

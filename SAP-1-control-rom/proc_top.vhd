@@ -28,7 +28,6 @@ architecture behavior of proc_top is
     signal hltbar_sig : std_logic := '1';
     signal clr_sig : STD_LOGIC;
     signal clrbar_sig : STD_LOGIC;
-    signal control_word_sig : std_logic_vector(3 downto 0);
     signal wbus_sel_sig : STD_LOGIC_VECTOR(2 downto 0);       
     signal Cp_sig : STD_LOGIC;
     signal LMBar_sig : STD_LOGIC;
