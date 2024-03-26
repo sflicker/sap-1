@@ -157,20 +157,6 @@ begin
             LOBar => LOBar_sig,
             hltbar => hltbar_sig
         );
-
-    -- control_rom : entity work.controller_rom
-    --     port map(
-    --         control_word => control_word_signal,
-    --         wbus_sel => wbus_sel_signal,
-    --         Cp => Cp_signal,
-    --         LMBar => LMBar_signal,
-    --         LIBar => LIBar_signal,
-    --         LABar => LABar_signal,
-    --         Su => Su_signal,
-    --         LBBar => LBBar_signal,
-    --         LOBar => LOBar_signal
-    --     );
-
         
       acc: entity work.accumulator
         Port map(

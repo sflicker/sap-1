@@ -57,8 +57,6 @@ signal S4_sig : STD_LOGIC;
 signal S5_clear_start_sig : STD_LOGIC;
 signal S6_step_sig : STD_LOGIC;
 signal S7_auto_sig : STD_LOGIC;
---signal step_sig : STD_LOGIC;
---signal auto_sig : STD_LOGIC;
 signal clrbar_sig : STD_LOGIC;
 
 
@@ -76,11 +74,6 @@ begin
             S5_clear_start => S5_clear_start_sig,
             S6_step => S6_step_sig,
             S7_auto => S7_auto_sig,
-            -- run_mode => run_mode,
-            -- run_toggle => run_toggle,
-            -- pulse => pulse,
---            rst => rst,
---            hltbar_external => hltbar_sig,
             running => open,
             s7_anodes_out => s7_anodes_out,
             s7_cathodes_out => s7_cathodes_out
@@ -99,36 +92,19 @@ begin
         if Test_Name = "PowerOn" then
             Report "Starting SAP-1 PowerOn Test";
             hltbar_sig <= '1';
-            --rst <= '0';
-            --run_mode <= '0';
             wait for 200 ns;
         elsif Test_Name = "Execute" then
 
             Report "Starting SAP-1 Execute Test";
---            hltbar_sig <= '1';
-            --rst <= '0';
-            --run_mode <= '0';
-            --run_toggle <= '0';
             S5_clear_start_sig <= '1';
             S7_auto_sig <= '0';
             S6_step_sig <= '0';
---            clrbar_sig <= '1';
---            opcode_sig <= "0000";
             wait for 200 ns;
             S5_clear_start_sig <= '0';
             wait for 105 ns;
             s7_auto_sig <= '1';
 
             wait for 300 ns;
-            --run_mode <= '1';
-            wait for 200 ns;
-            --rst <= '1';
-            wait for 200 ns;
-            --rst <= '0';
-            --run_toggle <= '1';
-            wait for 200 ns;
-            --run_toggle <= '0';
-            wait for 500 ns;
         end if; 
 
         wait;

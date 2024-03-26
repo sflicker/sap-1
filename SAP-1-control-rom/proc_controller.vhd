@@ -56,16 +56,11 @@ entity proc_controller is
     -- inputs
     clk : in STD_LOGIC;
     clrbar : in STD_LOGIC;
---    rst : in STD_LOGIC;
---    run_mode : in STD_LOGIC;
---    run_toggle : in STD_LOGIC;
     opcode : in STD_LOGIC_VECTOR(3 downto 0);          -- 5 opcodes in model, 4 bits of instruction form the opcode
   
     -- outputs
-    --control_word : out STD_LOGIC_VECTOR(3 downto 0)    -- 4 bits control word
     wbus_sel : out STD_LOGIC_VECTOR(2 downto 0);
     Cp  : out STD_LOGIC;                          -- increment program counter by one
-   -- ClrPC : out STD_LOGIC;
     LMBar : out STD_LOGIC;                        -- Load MAR register from WBus - enable low
     LIBar : out STD_LOGIC;                        -- LOAD IR register from WBus - enable low
     LABar : out STD_LOGIC;                        -- LOAD Accumulator register from WBus -- enable low
@@ -73,7 +68,6 @@ entity proc_controller is
     LBBar : out STD_LOGIC;                        -- LOAD B register from WBus - eanble low
     LOBar : out STD_LOGIC;
     HLTBar : out STD_LOGIC
-    --running : out STD_LOGIC
     );
 end proc_controller;
 
@@ -127,8 +121,6 @@ begin
     HLTBAR <= '0' when opcode = "1111" else
         '1';
 
---    running <= running_signal;
-
     run_mode_process:
         process(clk, clrbar, opcode)
             variable stage : integer := 1;
@@ -136,15 +128,9 @@ begin
             variable control_word : std_logic_vector(0 to 9);
         begin
 
-    --         if opcode = "1111" then
-    --             Report "Halting Run - Setting HLTBAR low";
-    --             HLTBAR <= '0';
-    -- --            running_signal <= '0';
+
             if CLRBAR = '0' then
                 stage := 1;
-            -- elsif run_mode = '1' and running_signal = '0' and rising_edge(run_toggle) then
-            --     running_signal <= '1';
-            --     Report "Starting Program Execution";               
             elsif rising_edge(clk) then
                 if stage = 1 then
                     control_word_index := "0000";
@@ -181,44 +167,5 @@ begin
 
             end if;
         end process;
-
---    stage_counter_inst : entity work.ring_counter_6bit
---         port map(
---             clk => clk,
---             rst => rst,
---             count => stage_counter--,
--- --            clk_out_1HZ => open,
--- --            anodes => open,
--- --            cathodes => open
---          );
-   
-    -- addr_rom : entity work.address_rom
-    --     port map(
-    --         addr_in => opcode,
-    --         data_out => address_rom_out
-    --         );
-            
-    -- preset_counter : entity work.presettable_counter
-    --     port map( clk => clk,
-    --             load => stage_counter(2),
-    --             clr => stage_counter(0),
-    --             control_word_base_addr => address_rom_out,
-    --             control_word_addr => control_word_signal
-    --            );
-                
-
-    -- control_rom : entity work.controller_rom
-    --     port map(
-    --         control_word => control_word_signal,
-    --         wbus_sel => wbus_sel,
-    --         Cp => Cp,
-    --         LMBar => LMBar,
-    --         LIBar => LIBar,
-    --         LABar => LABar,
-    --         Su => Su,
-    --         LBBar => LBBar,
-    --         LOBar => LOBar
-    --            );
-       
 
 end Behavioral;

@@ -45,15 +45,7 @@ end pc;
 architecture Behavioral of pc is
     -- signal internal_value : STD_LOGIC_VECTOR(3 downto 0) := "0000";
 begin
-    -- process(clr)
-    -- begin
-    --     if clr = '1' then
-    --         data_out <= (others => '0');
-    --     end if;
-    --     -- data_out <= internal_value;
 
-    -- end process;
-    
     process(clkbar, clrbar)
         variable internal_value : STD_LOGIC_VECTOR(3 downto 0) := "0000";
     begin

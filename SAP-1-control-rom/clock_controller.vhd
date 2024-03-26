@@ -6,29 +6,19 @@ entity clock_controller is
 
     Port(
         clk_in : IN STD_LOGIC;
-        -- rst : in STD_LOGIC;          
-        -- run_mode : in STD_LOGIC;
-        -- pulse : IN STD_LOGIC;
         step : IN STD_LOGIC;        -- single step  when high
         auto : IN STD_LOGIC;        -- manual/auto mode. 0 manual, 1 auto
         hltbar : in STD_LOGIC;      -- 
         clrbar : in STD_LOGIC;
         clk_out : OUT STD_LOGIC;
         clkbar_out : OUT STD_LOGIC
-        -- clk_out_1HZ : out STD_LOGIC;
-        -- clk_out_1HZ_bar : out STD_LOGIC;
-        -- clk_out_1KHZ : out STD_LOGIC
     );
 end clock_controller;
 
 architecture behavioral of clock_controller is
-  --  signal clock_pulse : STD_LOGIC;
     signal or_out : STD_LOGIC;
     signal and1_out : STD_LOGIC;
     signal and2_out : STD_LOGIC;
-   -- signal clk_out_raw_1HZ : STD_LOGIC;
-    --signal clk_out_1HZ : STD_LOGIC;
-    --signal clk_out_1KHZ : STD_LOGIC;
 begin
 
     -- single_pulse_generator : entity work.single_pulse_generator
