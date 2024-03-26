@@ -62,7 +62,9 @@ begin
 
     clr_sig <= '1' when S5_clear_start = '1' else '0';
     clrbar_sig <= not clr_sig;
+    running <= S7_auto and hltbar_sig;
 
+    
     GENERATING_CLOCK_CONVERTER:
         if SIMULATION_MODE
         generate
@@ -82,9 +84,7 @@ begin
         end generate;
 
     CLOCK_CTRL : entity work.clock_controller 
-        generic map(
-            SIMULATION_MODE => SIMULATION_MODE
-        )
+
         port map (
             clk_in => clk_ext_converted_sig,
             step => S6_step,
@@ -100,24 +100,24 @@ begin
             -- clk_out_1HZ_bar => clk_1HZ_bar_signal,
             --clk_out_1KHZ => clk_1KHZ_signal
         );
-    -- GENERATING_CLOCK_PROCESSOR:
-    --     if SIMULATION_MODE
-    --     generate
-    --         passthrough_clock_converter : entity work.passthrough_clock_converter
-    --             port map (
-    --                 clk_in => clk_in,   -- simulation test bench should generate a 1HZ clock
-    --                 clk_out => clk_1HZ_signal
-    --             );
-    --     else generate
-    --         FPGA_clock_converter : entity work.clock_converter
-    --             port map(
-    --                 clk_in_100MHZ => clk_in,    -- clock from BASYS3 FPGA SYSTEM CLOCK. change if other different
-    --                 rst => rst, 
-    --                 clk_out_1HZ => clk_1HZ_signal,            -- slow clock for processor from development. may increase later
-    --                 clk_out_1KHZ => clk_1KHZ_signal           -- clock for seven segment display on basys3 refresh  
-    --             );
+    GENERATING_CLOCK_PROCESSOR:
+        if SIMULATION_MODE
+        generate
+            passthrough_clock_converter : entity work.passthrough_clock_converter
+                port map (
+                    clk_in => clk_in,   -- simulation test bench should generate a 1HZ clock
+                    clk_out => clk_1HZ_signal
+                );
+        else generate
+            FPGA_clock_converter : entity work.clock_converter
+                port map(
+                    clk_in_100MHZ => clk_in,    -- clock from BASYS3 FPGA SYSTEM CLOCK. change if other different
+                    rst => rst, 
+                    clk_out_1HZ => clk_1HZ_signal,            -- slow clock for processor from development. may increase later
+                    clk_out_1KHZ => clk_1KHZ_signal           -- clock for seven segment display on basys3 refresh  
+                );
         
-    --     end generate;
+        end generate;
     
     -- single_pulse_generator : entity work.single_pulse_generator
     --     port map(
@@ -241,17 +241,17 @@ begin
                 output_out => display_data(7 downto 0)
             );
         
-    --   GENERATING_FPGA_OUTPUT : if SIMULATION_MODE = false
-    --     generate  
-    --         display_controller : entity work.display_controller
-    --         port map(
-    --             clk => clk_disp_refresh_1KHZ_sig,
-    --             rst => rst,
-    --             data_in => display_data,
-    --             anodes_out => s7_anodes_out,
-    --             cathodes_out => s7_cathodes_out
-    --         );
-    --     end generate;
+    GENERATING_FPGA_OUTPUT : if SIMULATION_MODE = false
+        generate  
+            display_controller : entity work.display_controller
+            port map(
+               clk => clk_disp_refresh_1KHZ_sig,
+               rst => rst,
+               data_in => display_data,
+               anodes_out => s7_anodes_out,
+               cathodes_out => s7_cathodes_out
+           );
+       end generate;
                               
     -- log:
     --     process(clk_in)

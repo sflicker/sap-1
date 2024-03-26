@@ -3,9 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.numeric_std.all;
 
 entity clock_controller is
-    generic (
-        SIMULATION_MODE : boolean := true
-    );
+
     Port(
         clk_in : IN STD_LOGIC;
         -- rst : in STD_LOGIC;          
@@ -32,24 +30,6 @@ architecture behavioral of clock_controller is
     --signal clk_out_1HZ : STD_LOGIC;
     --signal clk_out_1KHZ : STD_LOGIC;
 begin
-
-    -- GENERATING_CLOCK_CONVERTER:
-    --     if SIMULATION_MODE
-    --     generate
-    --         passthrough_clock_converter : entity work.passthrough_clock_converter
-    --         port map (
-    --             clk_in => clk_in,   -- simulation test bench should generate a 1HZ clock
-    --             clk_out => clk_out_raw_1HZ
-    --         );
-    --     else generate
-    --         FPGA_clock_converter : entity work.clock_converter
-    --         port map (
-    --             clk_in_100MHZ => clk_in,
-    --             rst => rst,
-    --             clk_out_1HZ => clk_out_raw_1HZ,
-    --             clk_out_1KHZ => clk_out_1KHZ
-    --         );
-    --     end generate;
 
     -- single_pulse_generator : entity work.single_pulse_generator
     --     port map(

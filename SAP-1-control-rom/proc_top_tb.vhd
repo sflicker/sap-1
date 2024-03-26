@@ -37,7 +37,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity proc_top_tb is
     generic (
-        Test_Name : String := "PowerOn"
+        Test_Name : String := "Execute"
     );
 end proc_top_tb;
 
