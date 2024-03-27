@@ -1,5 +1,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 entity proc_top is
     generic (
@@ -16,7 +17,8 @@ entity proc_top is
           S7_auto : STD_LOGIC;       -- manual/auto mode - 0 for manual, 1 for auto. 
           running : out STD_LOGIC;
           s7_anodes_out : out STD_LOGIC_VECTOR(3 downto 0);      -- maps to seven segment display
-          s7_cathodes_out : out STD_LOGIC_VECTOR(6 downto 0)     -- maps to seven segment display
+          s7_cathodes_out : out STD_LOGIC_VECTOR(6 downto 0);     -- maps to seven segment display
+          phase_out : out STD_LOGIC_VECTOR(5 downto 0)
         );
 end proc_top;
 
@@ -47,11 +49,13 @@ architecture behavior of proc_top is
     signal ram_data_in_sig : STD_LOGIC_VECTOR(7 downto 0);
     signal b_data_sig : STD_LOGIC_VECTOR(7 downto 0);
     signal display_data : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
+    signal stage_counter_sig : INTEGER;
 begin
 
     clr_sig <= '1' when S5_clear_start = '1' else '0';
     clrbar_sig <= not clr_sig;
     running <= S7_auto and hltbar_sig;
+    phase_out <= std_logic_vector(shift_left(unsigned'("000001"), stage_counter_sig - 1));
     
     GENERATING_CLOCK_CONVERTER:
         if SIMULATION_MODE
@@ -154,7 +158,8 @@ begin
             Su => Su_sig,
             LBBar => LBBar_sig,
             LOBar => LOBar_sig,
-            hltbar => hltbar_sig
+            hltbar => hltbar_sig,
+            stage_counter => stage_counter_sig
         );
         
       acc: entity work.accumulator

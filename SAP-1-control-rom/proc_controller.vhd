@@ -67,12 +67,13 @@ entity proc_controller is
     Su : out STD_LOGIC;                           -- operation for ALU. 0 - ADD, 1 - Subtract
     LBBar : out STD_LOGIC;                        -- LOAD B register from WBus - eanble low
     LOBar : out STD_LOGIC;
-    HLTBar : out STD_LOGIC
+    HLTBar : out STD_LOGIC;
+    stage_counter : out integer
     );
 end proc_controller;
 
 architecture Behavioral of proc_controller is
-    signal stage_counter : integer;
+    --signal stage_counter : integer;
     signal control_word_index_signal : std_logic_vector(3 downto 0);
     signal control_word_signal : std_logic_vector(0 to 9);
 
