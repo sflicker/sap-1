@@ -68,12 +68,13 @@ entity proc_controller is
     LBBar : out STD_LOGIC;                        -- LOAD B register from WBus - eanble low
     LOBar : out STD_LOGIC;
     HLTBar : out STD_LOGIC;
-    phase_out : out STD_LOGIC_VECTOR(5 downto 0)
+    stage_out : out integer
     );
 end proc_controller;
 
 architecture Behavioral of proc_controller is
-    --signal stage_counter : integer;
+    signal stage_sig : integer := 1;
+
     signal control_word_index_signal : std_logic_vector(3 downto 0);
     signal control_word_signal : std_logic_vector(0 to 9);
 
@@ -110,9 +111,9 @@ architecture Behavioral of proc_controller is
        7 =>  "1000111001",      -- ADD Phase5: RAM -> B, SU -> 0
        8 =>  "0100110011",      -- ADD Phase6: ALU -> A
        -- SUB
-       9 =>  "0110011111",      -- SUB Phase4: IR(operand portion) -> MAR, SU => 1
+       9 =>  "0110011011",      -- SUB Phase4: IR(operand portion) -> MAR
        10 => "1000111101",      -- SUB Phase5: RAM -> B, SU => 1
-       11 => "0100110011",      -- --SUB phase6: ALU => A, SU => 1
+       11 => "0100110011",      -- --SUB phase6: ALU => A
        -- OUT
        12 => "0010111010",      -- OUT phase 4  A => OUT
        13 => NOP,      -- OUT phase 5 NOP
@@ -125,20 +126,22 @@ architecture Behavioral of proc_controller is
 begin
     HLTBAR <= '0' when opcode = "1111" else
         '1';
+    stage_out <= stage_sig;
 
     run_mode_process:
         process(clk, clrbar, opcode)
-            variable stage : integer := 1;
+            variable stage_var : integer := 1;
             variable control_word_index : std_logic_vector(3 downto 0);
             variable control_word : std_logic_vector(0 to 9);
         begin
 
             if CLRBAR = '0' then
-                stage := 1;
+                stage_var := 1;
+                stage_sig <= stage_var;
             elsif rising_edge(clk) then
-                if stage = 1 then
+                if stage_var = 1 then
                     control_word_index := "0000";
-                elsif stage = 4 then
+                elsif stage_var = 4 then
                     control_word_index := ADDRESS_ROM_CONTENTS(to_integer(unsigned(opcode)));
                 else 
                     control_word_index := std_logic_vector(unsigned(control_word_index) + 1);
@@ -147,13 +150,14 @@ begin
                 control_word := CONTROL_ROM(to_integer(unsigned(control_word_index)));
 
 
-                Report "Stage: " & to_string(stage) 
+                Report "Stage: " & to_string(stage_var) 
                     & ", control_word_index: " & to_string(control_word_index) 
                     & ", control_word: " & to_string(control_word) & ", opcode: " & to_string(opcode);
 
                 if control_word = NOP then
                     Report "NOP detected moving to next instruction";
-                    stage := 1;
+                    stage_var := 1;
+                    stage_sig <= stage_var;
 --                    stage_counter <= stage;
                 else
 
@@ -170,14 +174,16 @@ begin
 
 --                    stage_counter <= stage;
         
-                    if stage >= 6 then
-                        stage := 1;
-                    else 
-                        stage := stage + 1;
+                    if stage_var >= 6 then
+                        stage_var := 1;
+                        stage_sig <= stage_var;
+                    else
+                        stage_var := stage_var + 1; 
+                        stage_sig <= stage_var;
                     end if;
                 end if;
             end if;
-        phase_out <= std_logic_vector(shift_left(unsigned'("000001"), stage - 1));
+--        phase_out <= std_logic_vector(shift_left(unsigned'("000001"), stage - 1));
         end process;
 
 end Behavioral;

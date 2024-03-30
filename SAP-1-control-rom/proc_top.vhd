@@ -19,7 +19,7 @@ entity proc_top is
           running : out STD_LOGIC;
           s7_anodes_out : out STD_LOGIC_VECTOR(3 downto 0);      -- maps to seven segment display
           s7_cathodes_out : out STD_LOGIC_VECTOR(6 downto 0);     -- maps to seven segment display
-          phase_out : out STD_LOGIC_VECTOR(5 downto 0)
+          stage_out : out STD_LOGIC_VECTOR(5 downto 0)
         );
         attribute MARK_DEBUG : string;
         attribute MARK_DEBUG of S5_clear_start : signal is "true";
@@ -58,7 +58,7 @@ architecture behavior of proc_top is
     signal ram_data_in_sig : STD_LOGIC_VECTOR(7 downto 0);
     signal b_data_sig : STD_LOGIC_VECTOR(7 downto 0);
     signal display_data : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
-  --  signal stage_counter_sig : INTEGER;
+    signal stage_counter_sig : INTEGER;
     
     attribute MARK_DEBUG of clk_ext_converted_sig : signal is "true";
     attribute MARK_DEBUG of clk_sys_sig : signal is "true";
@@ -178,7 +178,7 @@ begin
             LBBar => LBBar_sig,
             LOBar => LOBar_sig,
             hltbar => hltbar_sig,
-            phase_out => phase_out
+            stage_out => stage_counter_sig
         );
         
       acc: entity work.accumulator
