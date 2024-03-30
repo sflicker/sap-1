@@ -19,10 +19,11 @@ entity proc_top is
           running : out STD_LOGIC;
           s7_anodes_out : out STD_LOGIC_VECTOR(3 downto 0);      -- maps to seven segment display
           s7_cathodes_out : out STD_LOGIC_VECTOR(6 downto 0);     -- maps to seven segment display
-          stage_out : out STD_LOGIC_VECTOR(5 downto 0)
+          phase_out : out STD_LOGIC_VECTOR(5 downto 0)
         );
         attribute MARK_DEBUG : string;
         attribute MARK_DEBUG of S5_clear_start : signal is "true";
+        attribute MARK_DEBUG of S6_step : signal is "true";
         attribute MARK_DEBUG of S7_auto : signal is "true";
         attribute MARK_DEBUG of running : signal is "true";
     
@@ -59,6 +60,7 @@ architecture behavior of proc_top is
     signal b_data_sig : STD_LOGIC_VECTOR(7 downto 0);
     signal display_data : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
     signal stage_counter_sig : INTEGER;
+    signal output_sig : STD_LOGIC_VECTOR(7 downto 0);
     
     attribute MARK_DEBUG of clk_ext_converted_sig : signal is "true";
     attribute MARK_DEBUG of clk_sys_sig : signal is "true";
@@ -66,7 +68,15 @@ architecture behavior of proc_top is
     
     attribute MARK_DEBUG of hltbar_sig : signal is "true";
     attribute MARK_DEBUG of clrbar_sig : signal is "true";
+    attribute MARK_DEBUG of Su_sig : signal is "true";
+    attribute MARK_DEBUG of pc_data_sig : signal is "true";
+    attribute MARK_DEBUG of mar_addr_sig : signal is "true";
     attribute MARK_DEBUG of IR_opcode_sig : signal is "true";
+    attribute MARK_DEBUG of IR_operand_sig : signal is "true";
+    attribute MARK_DEBUG of acc_data_sig : signal is "true";
+    attribute MARK_DEBUG of b_data_sig : signal is "true";
+    attribute MARK_DEBUG of output_sig : signal is "true";
+
     
     
 
@@ -75,6 +85,8 @@ begin
     clr_sig <= '1' when S5_clear_start = '1' else '0';
     clrbar_sig <= not clr_sig;
     running <= S7_auto and hltbar_sig;
+    
+    phase_out <= std_logic_vector(shift_left(unsigned'("000001"), stage_counter_sig - 1));
     
     GENERATING_CLOCK_CONVERTER:
         if SIMULATION_MODE
@@ -210,8 +222,13 @@ begin
                 clk => clk_sys_sig,
                 LOBar => LOBar_sig,
                 output_in => w_bus_data_sig,
-                output_out => display_data(7 downto 0)
+                output_out => output_sig
             );
+        
+    display_data(7 downto 0) <= output_sig when not running;
+--    display_data(7 downto 4) <= IR_opcode_sig when running;
+--    display_data(3 downto 0) <= IR_operand_sig when running;
+--    display_data(11 downto 8) <= pc_data_sig when running;
         
     GENERATING_FPGA_OUTPUT : if SIMULATION_MODE = false
         generate  

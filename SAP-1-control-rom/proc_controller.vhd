@@ -111,9 +111,9 @@ architecture Behavioral of proc_controller is
        7 =>  "1000111001",      -- ADD Phase5: RAM -> B, SU -> 0
        8 =>  "0100110011",      -- ADD Phase6: ALU -> A
        -- SUB
-       9 =>  "0110011011",      -- SUB Phase4: IR(operand portion) -> MAR
+       9 =>  "0110011111",      -- SUB Phase4: IR(operand portion) -> MAR
        10 => "1000111101",      -- SUB Phase5: RAM -> B, SU => 1
-       11 => "0100110011",      -- --SUB phase6: ALU => A
+       11 => "0100110111",      -- --SUB phase6: ALU => A
        -- OUT
        12 => "0010111010",      -- OUT phase 4  A => OUT
        13 => NOP,      -- OUT phase 5 NOP
