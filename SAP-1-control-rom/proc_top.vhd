@@ -2,6 +2,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
+
 entity proc_top is
     generic (
         SIMULATION_MODE : boolean := false
@@ -20,9 +21,17 @@ entity proc_top is
           s7_cathodes_out : out STD_LOGIC_VECTOR(6 downto 0);     -- maps to seven segment display
           phase_out : out STD_LOGIC_VECTOR(5 downto 0)
         );
-end proc_top;
+        attribute MARK_DEBUG : string;
+        attribute MARK_DEBUG of S5_clear_start : signal is "true";
+        attribute MARK_DEBUG of S7_auto : signal is "true";
+        attribute MARK_DEBUG of running : signal is "true";
+    
+    end proc_top;
 
 architecture behavior of proc_top is
+
+--    attribute MARK_DEBUG : string;
+
     signal clk_ext_converted_sig : STD_LOGIC;
     signal clk_sys_sig : std_logic;
     signal clkbar_sys_sig : std_logic;
@@ -49,13 +58,23 @@ architecture behavior of proc_top is
     signal ram_data_in_sig : STD_LOGIC_VECTOR(7 downto 0);
     signal b_data_sig : STD_LOGIC_VECTOR(7 downto 0);
     signal display_data : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
-    signal stage_counter_sig : INTEGER;
+  --  signal stage_counter_sig : INTEGER;
+    
+    attribute MARK_DEBUG of clk_ext_converted_sig : signal is "true";
+    attribute MARK_DEBUG of clk_sys_sig : signal is "true";
+    attribute MARK_DEBUG of clkbar_sys_sig : signal is "true";
+    
+    attribute MARK_DEBUG of hltbar_sig : signal is "true";
+    attribute MARK_DEBUG of clrbar_sig : signal is "true";
+    attribute MARK_DEBUG of IR_opcode_sig : signal is "true";
+    
+    
+
 begin
 
     clr_sig <= '1' when S5_clear_start = '1' else '0';
     clrbar_sig <= not clr_sig;
     running <= S7_auto and hltbar_sig;
-    phase_out <= std_logic_vector(shift_left(unsigned'("000001"), stage_counter_sig - 1));
     
     GENERATING_CLOCK_CONVERTER:
         if SIMULATION_MODE
@@ -159,7 +178,7 @@ begin
             LBBar => LBBar_sig,
             LOBar => LOBar_sig,
             hltbar => hltbar_sig,
-            stage_counter => stage_counter_sig
+            phase_out => phase_out
         );
         
       acc: entity work.accumulator

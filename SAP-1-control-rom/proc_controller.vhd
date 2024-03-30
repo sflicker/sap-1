@@ -68,7 +68,7 @@ entity proc_controller is
     LBBar : out STD_LOGIC;                        -- LOAD B register from WBus - eanble low
     LOBar : out STD_LOGIC;
     HLTBar : out STD_LOGIC;
-    stage_counter : out integer
+    phase_out : out STD_LOGIC_VECTOR(5 downto 0)
     );
 end proc_controller;
 
@@ -76,6 +76,11 @@ architecture Behavioral of proc_controller is
     --signal stage_counter : integer;
     signal control_word_index_signal : std_logic_vector(3 downto 0);
     signal control_word_signal : std_logic_vector(0 to 9);
+
+--    phase_out <= std_logic_vector(shift_left(unsigned'("000001"), stage_counter_sig - 1));
+
+--    stage_counter : out integer
+
 
     type ADDRESS_ROM_TYPE is array(0 to 15) of std_logic_vector(3 downto 0);
     type CONTROL_ROM_TYPE is array(0 to 15) of STD_LOGIC_VECTOR(0 to 9);
@@ -105,9 +110,9 @@ architecture Behavioral of proc_controller is
        7 =>  "1000111001",      -- ADD Phase5: RAM -> B, SU -> 0
        8 =>  "0100110011",      -- ADD Phase6: ALU -> A
        -- SUB
-       9 =>  "0110011011",      -- SUB Phase4: IR(operand portion) -> MAR
+       9 =>  "0110011111",      -- SUB Phase4: IR(operand portion) -> MAR, SU => 1
        10 => "1000111101",      -- SUB Phase5: RAM -> B, SU => 1
-       11 => "0100110011",      -- --SUB phase6: ALU => A
+       11 => "0100110011",      -- --SUB phase6: ALU => A, SU => 1
        -- OUT
        12 => "0010111010",      -- OUT phase 4  A => OUT
        13 => NOP,      -- OUT phase 5 NOP
@@ -127,7 +132,6 @@ begin
             variable control_word_index : std_logic_vector(3 downto 0);
             variable control_word : std_logic_vector(0 to 9);
         begin
-
 
             if CLRBAR = '0' then
                 stage := 1;
@@ -150,7 +154,7 @@ begin
                 if control_word = NOP then
                     Report "NOP detected moving to next instruction";
                     stage := 1;
-                    stage_counter <= stage;
+--                    stage_counter <= stage;
                 else
 
                     control_word_signal <= control_word;
@@ -164,7 +168,7 @@ begin
                     LBBar <= control_word(8);
                     LOBar <= control_word(9);
 
-                    stage_counter <= stage;
+--                    stage_counter <= stage;
         
                     if stage >= 6 then
                         stage := 1;
@@ -173,6 +177,7 @@ begin
                     end if;
                 end if;
             end if;
+        phase_out <= std_logic_vector(shift_left(unsigned'("000001"), stage - 1));
         end process;
 
 end Behavioral;
