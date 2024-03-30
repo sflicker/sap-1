@@ -19,7 +19,9 @@ entity proc_top is
           running : out STD_LOGIC;
           s7_anodes_out : out STD_LOGIC_VECTOR(3 downto 0);      -- maps to seven segment display
           s7_cathodes_out : out STD_LOGIC_VECTOR(6 downto 0);     -- maps to seven segment display
-          phase_out : out STD_LOGIC_VECTOR(5 downto 0)
+          phase_out : out STD_LOGIC_VECTOR(5 downto 0);
+          clear_out : out STD_LOGIC;
+          step_out : out STD_LOGIC
         );
         attribute MARK_DEBUG : string;
         attribute MARK_DEBUG of S5_clear_start : signal is "true";
@@ -68,6 +70,7 @@ architecture behavior of proc_top is
     
     attribute MARK_DEBUG of hltbar_sig : signal is "true";
     attribute MARK_DEBUG of clrbar_sig : signal is "true";
+    attribute MARK_DEBUG of clr_sig : signal is "true";
     attribute MARK_DEBUG of Su_sig : signal is "true";
     attribute MARK_DEBUG of pc_data_sig : signal is "true";
     attribute MARK_DEBUG of mar_addr_sig : signal is "true";
@@ -85,7 +88,9 @@ begin
     clr_sig <= '1' when S5_clear_start = '1' else '0';
     clrbar_sig <= not clr_sig;
     running <= S7_auto and hltbar_sig;
-    
+    clear_out <= S5_clear_start;
+    step_out <= S6_step; 
+     
     phase_out <= std_logic_vector(shift_left(unsigned'("000001"), stage_counter_sig - 1));
     
     GENERATING_CLOCK_CONVERTER:
@@ -220,12 +225,15 @@ begin
     OUTPUT_REG : entity work.output
             port map (
                 clk => clk_sys_sig,
+                clr => clr_sig,
                 LOBar => LOBar_sig,
                 output_in => w_bus_data_sig,
                 output_out => output_sig
             );
         
-    display_data(7 downto 0) <= output_sig when not running;
+    display_data <= ("00000000" & output_sig) when not running else
+                    ("0000" & pc_data_sig & IR_opcode_sig & IR_operand_sig) when running;
+    -- TODO use a multiplexer so different types of output can be used on the seven segment displays
 --    display_data(7 downto 4) <= IR_opcode_sig when running;
 --    display_data(3 downto 0) <= IR_operand_sig when running;
 --    display_data(11 downto 8) <= pc_data_sig when running;
